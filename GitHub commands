@@ -1,0 +1,20 @@
+Para crear la carpeta linkeada al repositorio, posicionarse en la carpeta donde se desea crear y ejecutar:
+git clone linkDelRepositorio
+
+Posicionados dentro de la carpeta del repositorio:
+
+para ver el estado del repositorio web con respecto a la carpeta local, y saber que documentos no estan actualizados
+git status 
+
+para agregar un archivo y que este luego sea añadido al repositorio quedando disponible para todos
+git add archivo.extension
+git add . (agrega todo)
+
+luego de cada add  se envia un mensaje explicando que se hizo
+git commit -m "mensaje, suele empezar con added o modified"
+
+para añadir definitivamente los archivos a los cuales se les ordeno add
+git push
+
+para obtener la ultima version de los archivos del repositorio
+git pull
