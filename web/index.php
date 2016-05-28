@@ -1,3 +1,8 @@
+<?php
+/* start the session */
+session_start();
+// echo "Welcome, " . $_SESSION['username'];
+?>
 <!DOCTYPE html>
 <html lang="en">
   	<head>

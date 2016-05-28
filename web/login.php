@@ -73,17 +73,17 @@
           </div>
   
           <div class="panel-body">
-            <form role="form">
+            <form role="form" method="post" action="checklogin.php">
 <!--    <div class="alert alert-danger">
                 <a class="close" data-dismiss="alert" href="#">×</a>Usuario o contraseña incorrecta!
             </div> -->
               <div style="margin-bottom: 12px" class="input-group">
                 <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                <input id="login-username" type="text" class="form-control" name="username" value="" placeholder="Usuario">
+                <input type="text" class="form-control" name="username" placeholder="Usuario">
               </div> 
               <div style="margin-bottom: 12px" class="input-group">
                 <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                <input id="login-password" type="password" class="form-control" name="password" placeholder="Contraseña">
+                <input type="password" class="form-control" name="password" placeholder="Contraseña">
               </div>
               <div style="float:left; font-size: 90%; position: relative; top:-10px">
                 <a href="???aca iria la direccion para recuperar contraseña">Olvidaste tu contraseña?</a>
@@ -94,9 +94,9 @@
               </div>
               <hr style="margin-top:10px;margin-bottom:10px;" >
               <div class="form-group">
-                <div style="font-size:85%"> Aun no tienes cuenta?
+<!--                 <div style="font-size:85%"> Aun no tienes cuenta?
                   <a href="#" onClick="window.location.href='registro.php'"> Registrate ya!</a>
-                </div>
+                </div> -->
               </div> 
             </form>
           </div>

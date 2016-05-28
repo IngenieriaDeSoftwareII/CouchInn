@@ -79,11 +79,11 @@
 								</div>
 								<div class="col-sm-4 form-group">
 									<label>Apellido</label>
-									<input type="text" maxlength="100" name="apellido"placeholder="Ingresa tu apellido aqui.." class="form-control">
+									<input type="text" maxlength="100" name="apellido" placeholder="Ingresa tu apellido aqui.." class="form-control">
 								</div>
 								<div class="col-sm-4 form-group">
 									<label>DNI</label>
-									<input type="text" maxlength="8" name="dni"placeholder="Ingresa tu DNI aqui.." class="form-control">
+									<input type="text" maxlength="8" name="dni" placeholder="Ingresa tu DNI aqui.." class="form-control">
 								</div>
 							</div>
 							<div class="row">					

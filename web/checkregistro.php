@@ -29,7 +29,7 @@ else{
  		echo "Error al crear el usuario." . "<br />";
  	}
  	else{
-		exit;
+		header("Location: index.php");
 	}
 }
 mysql_close($conexion)
