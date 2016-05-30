@@ -36,25 +36,30 @@ session_start();
 		<div class="container">
 			<div class="panel panel-default">
 				  <!-- Default panel contents -->
-				  <div class="panel-heading">Tipos de Propiedades</div>
+				  <div class="panel-heading">Listado de Usuarios</div>
 
 				  <!-- Table -->
 				  <table class="table">
 				    <tr>
+				    	<td><strong>Nombre_Usuario</strong></td>
+						<td><strong>Contrasena</strong></td>
 						<td><strong>Nombre</strong></td>
-						<td><strong>Descripcion</strong></td>
-						<td><strong>Modificar</strong></td>
-						<td><strong>Eliminar</strong></td>
+						<td><strong>Apellido</strong></td>
+						<td><strong>DNI</strong></td>
+						<td><strong>Telefono</strong></td>
+						<td><strong>Email</strong></td>
 					</tr>
 					<?php
-					$result = mysql_query("SELECT * FROM tipo_propiedad");
+					$result = mysql_query("SELECT * FROM usuario");
 					while ($tabla = mysql_fetch_array($result)){ ?>
 						<tr>
-							<td> <?php echo $tabla["id_tipo_propiedad"];?></td>
+							<td> <?php echo $tabla["nombre_usuario"];?></td>
+							<td> <?php echo $tabla["contrasena"];?></td>
 							<td> <?php echo $tabla["nombre"];?></td>
-							<td> <?php echo $tabla["descripcion"];?></td>
-							<td> <button name=<?php $tabla["id_tipo_propiedad"];?> type="button" <div class="btn-group btn-warning btn-group-xs" onClick="window.location.href='session_close.php'">Modificar</button> </td>
-							<td> <button type="button" class="btn-group btn-danger btn-group-xs" onClick="window.location.href='property_kind_delete_check.php'">Eliminar</button> </td>
+							<td> <?php echo $tabla["apellido"];?></td>
+							<td> <?php echo $tabla["dni"];?></td>
+							<td> <?php echo $tabla["telefono"];?></td>
+							<td> <?php echo $tabla["email"];?></td>
 						</tr>
 					<?php
 					}
