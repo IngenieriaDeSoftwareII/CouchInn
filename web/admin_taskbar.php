@@ -33,7 +33,7 @@
 						    Administracion <span class="caret"></span>
 							</button>
 			         		<ul class="dropdown-menu">			            		
-			         			<li><a href="#">Listado tipo propiedades</a></li>
+			         			<li><a href="property_kind_list_check.php">Listado tipo propiedades</a></li>
 			            		<li><a href="property_kind.php">Agregar tipo propiedad</a></li>
 			            		<li><a href="#">Listado usuarios</a></li>
 			          		</ul>
