@@ -27,6 +27,7 @@
 			      		</form>
 			      	</ul>
 			    	<ul class="nav navbar-nav navbar-right">
+						<div class="btn-group">
 							<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 							    Mi Perfil <span class="caret"></span>
 							</button>
@@ -36,6 +37,7 @@
 			            		<li><a href="#">Mis reservas</a></li>
 			            		<li><a href="#">Mis preguntas</a></li>
 			          		</ul>
+			          	</div>
 						<button type="button" class="btn btn-danger navbar-btn" onClick="window.location.href='session_close.php'">Cerrar Sesion</button>
 			    	</ul>
 			    </div><!-- /.navbar-collapse -->
