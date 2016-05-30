@@ -1,7 +1,5 @@
 <?php
-
 session_start();
-
 ?>
 
 <!DOCTYPE html>
@@ -26,34 +24,43 @@ session_start();
 		else{
 			header("Location: index.php");
 		}
+		
+		// Conectando, seleccionando la base de datos
+		$con = mysql_connect('localhost', 'root', '') or die ("No se pudo conectar a la BD");
+		mysql_select_db("couchInn", $con) or die ("No se pudo conectar a la BD");
 		?>
-	</body>
+
+		<div class="container">
+			<div class="panel panel-default">
+				<!-- Default panel contents -->
+				<div class="panel-heading">Tipos de Propiedades</div>
+
+				<!-- Table -->
+				<table class="table">
+				    <tr>
+						<td><strong>Nombre</strong></td>
+						<td><strong>Descripcion</strong></td>
+						<td><strong>Modificar</strong></td>
+						<td><strong>Eliminar</strong></td>
+					</tr>
+					<?php
+					$result = mysql_query("SELECT * FROM tipo_propiedad");
+					while ($tabla = mysql_fetch_array($result)){ ?>
+						<tr>
+							<td> <?php echo $tabla["id_tipo_propiedad"];?></td>
+							<td> <?php echo $tabla["nombre"];?></td>
+							<td> <?php echo $tabla["descripcion"];?></td>
+							<td> <button name=<?php $tabla["id_tipo_propiedad"];?> type="button" <div class="btn-group btn-warning btn-group-xs" onClick="window.location.href='#.php'">Modificar</button> </td>
+							<td> <button type="button" class="btn-group btn-danger btn-group-xs" onClick="window.location.href='#'">Eliminar</button> </td>
+						</tr>
+					<?php
+					}
+					?>
+				</table>
+			</div>
+		</div>
+
+    	<script src="js/jquery.js"></script>
+    	<script src="js/bootstrap.min.js"></script>
+  	</body>
 </html>
-
-<?php
-$host_db = "localhost";
-$user_db = "root";
-$pass_db = ""; 
-
-$conexion = mysql_connect($host_db, $user_db, $pass_db);
-mysql_select_db('couchInn', $conexion) or die("No se puede seleccionar la base de datos.");
-
-$result = mysql_query("SELECT * FROM tipo_propiedad");
-
-echo "<table border='1'>
-<tr>
-<th>Nombre</th>
-<th>Descripcion</th>
-</tr>";
-
-while ($row = mysql_fetch_array($result))
-{
-echo "<tr>";
-echo "<td>" . $row['nombre'] . "</td>";
-echo "<td>" . $row['descripcion'] . "</td>";
-echo "</tr>";
-}
-echo "</table>";
-
-mysql_close($conexion);
-?>

@@ -1,7 +1,5 @@
 <?php
-
 session_start();
-
 ?>
 
 <!DOCTYPE html>
@@ -67,5 +65,8 @@ session_start();
 				  </table>
 			</div>
 		</div>
-	</body>
+
+    	<script src="js/jquery.js"></script>
+    	<script src="js/bootstrap.min.js"></script>
+  	</body>
 </html>

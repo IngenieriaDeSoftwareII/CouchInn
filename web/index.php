@@ -35,8 +35,9 @@ session_start();
 		}
 		?>
 		<nav>
-		        <h2><font face="Comics" size=5 color=grey><b>Un viaje de mil millas comienza con un solo paso...</b></font></h2> 
+		        <h2><font face="Arial" size=5 color=grey><b>Un viaje de mil millas comienza con un solo paso...</b></font></h2> 
 	    </nav>
+	    <br></br>
 		<div class="container">
 			<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
 			  	<ol class="carousel-indicators">
