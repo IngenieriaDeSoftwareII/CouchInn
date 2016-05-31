@@ -18,6 +18,21 @@ session_start();
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+
+  <script type="text/javascript">
+    function login_validation(){
+    var nombre_usuario = document.getElementById("nombre_usuario").value;
+    var contrasena = document.getElementById("contrasena").value;
+    if (nombre_usuario == ''){
+      alert("Por favor ingrese el nombre.");
+      return false;
+    }
+    if (contrasena == ''){
+      alert("Por favor ingrese la descripcion.");
+      return false;
+    }
+  }
+  </script>
   </head>
   <body>
     <?php
@@ -42,7 +57,7 @@ session_start();
           </div>
   
           <div class="panel-body">
-            <form role="form" method="post" action="login_check.php">
+            <form role="form" method="post" action="login_check.php" onsubmit="return login_validation()">
 <!--    <div class="alert alert-danger">
                 <a class="close" data-dismiss="alert" href="#">×</a>Usuario o contraseña incorrecta!
             </div> -->
