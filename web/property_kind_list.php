@@ -38,10 +38,9 @@ session_start();
 				<!-- Table -->
 				<table class="table">
 				    <tr>
+				    	<td><strong>ID</strong></td>
 						<td><strong>Nombre</strong></td>
 						<td><strong>Descripcion</strong></td>
-						<td><strong>Modificar</strong></td>
-						<td><strong>Eliminar</strong></td>
 					</tr>
 					<?php
 					$result = mysql_query("SELECT * FROM tipo_propiedad");
@@ -50,8 +49,8 @@ session_start();
 							<td> <?php echo $tabla["id_tipo_propiedad"];?></td>
 							<td> <?php echo $tabla["nombre"];?></td>
 							<td> <?php echo $tabla["descripcion"];?></td>
-							<td> <button name=<?php $tabla["id_tipo_propiedad"];?> type="button" <div class="btn-group btn-warning btn-group-xs" onClick="window.location.href='#.php'">Modificar</button> </td>
-							<td> <button type="button" class="btn-group btn-danger btn-group-xs" onClick="window.location.href='#'">Eliminar</button> </td>
+							<td> <button name=<?php $tabla["id_tipo_propiedad"];?> type="button" <div class="btn btn-warning btn-group-xs" onClick="window.location.href='#.php'">Modificar</button> </td>
+							<td> <button type="button" name=<?php $tabla["id_tipo_propiedad"];?> id="delete" class="btn btn-danger btn-group-xs" onClick="window.location.href='property_kind_delete_check.php'">Eliminar</button> </td>
 						</tr>
 					<?php
 					}
