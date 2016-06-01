@@ -14,7 +14,7 @@ session_start();
   	<body>
     	<?php
 		if (isset ($_SESSION['rol'])){
-			if ($_SESSION['rol'] == 1){
+			if (($_SESSION['rol'] == 1) || ($_SESSION['rol'] == 2)){
 				header("Location: index.php");
 			}
 			else{
@@ -26,52 +26,61 @@ session_start();
 		}
 		
 		// Conectando, seleccionando la base de datos
-		$con = mysql_connect('localhost', 'root', '')
-		or die ("No se pudo conectar a la BD");
-		mysql_select_db("couchInn", $con)
-		 or die ("No se pudo conectar a la BD");
+		$con = mysql_connect('localhost', 'root', '') or die ("No se pudo conectar a la BD");
+		mysql_select_db("couchInn", $con) or die ("No se pudo conectar a la BD");
 		?>
+		
 		<div class="container">
-			<div class="panel panel-default">
-				  <!-- Default panel contents -->
-				  <div class="panel-heading">Listado de Usuarios</div>
-
-				  <!-- Table -->
-				  <table class="table">
-				    <tr>
-				    	<td><strong>Nombre_Usuario</strong></td>
-						<td><strong>Contrasena</strong></td>
-						<td><strong>Nombre</strong></td>
-						<td><strong>Apellido</strong></td>
-						<td><strong>DNI</strong></td>
-						<td><strong>Telefono</strong></td>
-						<td><strong>Email</strong></td>
-					</tr>
-					<?php
-					$result = mysql_query("SELECT * FROM usuario");
-					while ($tabla = mysql_fetch_array($result)){ ?>
-						<tr>
-							<td> <?php echo $tabla["nombre_usuario"];?></td>
-							<td> <?php echo $tabla["contrasena"];?></td>
-							<td> <?php echo $tabla["nombre"];?></td>
-							<td> <?php echo $tabla["apellido"];?></td>
-							<td> <?php echo $tabla["dni"];?></td>
-							<td> <?php echo $tabla["telefono"];?></td>
-							<td> <?php echo $tabla["email"];?></td>
+			<h1 class="well">Listado de Usuarios</h1>
+				<form name="form" method="post" action="user_premium_manager.php">
+					<div class="panel panel-default">
+						<table class="table">
+						    <tr>
+						    	<td><strong>Nombre_Usuario</strong></td>
+								<td><strong>Contrasena</strong></td>
+								<td><strong>Nombre</strong></td>
+								<td><strong>Apellido</strong></td>
+								<td><strong>DNI</strong></td>
+								<td><strong>Telefono</strong></td>
+								<td><strong>Email</strong></td>
+							</tr>
 							<?php
-								if ($tabla["rol"] == 1){
-									echo '<td> <button type="submit" name="premium" id="premium" class="btn btn-warning btn-group-xs">Premium</button> </td>';
-								}
-								else{
-									echo "<td> </td>";
-								}
+							$result = mysql_query("SELECT * FROM usuario");
+							while ($tabla = mysql_fetch_array($result)){ 
+								$var = $tabla["id_usuario"];
+								?>
+								<tr>
+									<td> <?php echo $tabla["nombre_usuario"];?></td>
+									<td> <?php echo $tabla["contrasena"];?></td>
+									<td> <?php echo $tabla["nombre"];?></td>
+									<td> <?php echo $tabla["apellido"];?></td>
+									<td> <?php echo $tabla["dni"];?></td>
+									<td> <?php echo $tabla["telefono"];?></td>
+									<td> <?php echo $tabla["email"];?></td>
+									<?php
+										if ($tabla['rol'] == 1){
+											?>
+											<td> <center> <button type="submit" name="premium" id="premium" value="<?php echo htmlspecialchars($var);?>" class="btn btn-warning btn-group-xs">Hacer Premium</button> </td>
+										<?php
+										}
+										else{
+											if ($tabla['rol'] == 2){
+												?>
+												<td> <center> <button type="submit" name="regular" id="regular" value="<?php echo htmlspecialchars($var);?>" class="btn btn-danger btn-group-xs">Quitar Premium</button> </td>
+											<?php
+											}
+											else{
+												echo '<td><b><center>Admin</b></td>';
+											}
+										}
+									?>
+								</tr>
+							<?php
+							}
 							?>
-						</tr>
-					<?php
-					}
-					?>
-				  </table>
-			</div>
+						  </table>
+					</div>
+				</form>
 		</div>
 
     	<script src="js/jquery.js"></script>

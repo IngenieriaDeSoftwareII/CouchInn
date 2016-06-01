@@ -21,33 +21,28 @@
 			        	<li><a href="#">Publicar propiedad</a></li>
 			      		<form class="navbar-form navbar-left" role="search">
 			       		<div class="form-group">
-			          		<input type="text" class="form-control" placeholder="¿A dónde vas?">
+			          		<input type="text" class="form-control" placeholder="Buscar propiedad">
 			        	</div>
 			        	<button type="submit" class="btn btn-default">Buscar</button>
 			      		</form>
 			      	</ul>
-			      	<!-- Single button -->
-			    	<ul class="nav navbar-nav navbar-right">	
+			    	<ul class="nav navbar-nav navbar-right">
 						<div class="btn-group">
-							<button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-						    Administracion <span class="caret"></span>
-							</button>
-			         		<ul class="dropdown-menu">			            		
-			         			<li><a href="property_kind.php">Agregar tipo propiedad</a></li>
-			         			<li><a href="property_kind_list.php">Listado tipo propiedades</a></li>
-			            		<li><a href="users_list.php">Listado usuarios</a></li>
-			          		</ul>
-		          		</div>
-		          		<div class="btn-group">
 							<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 							    Mi Perfil <span class="caret"></span>
 							</button>
-				       		<ul class="dropdown-menu">
-				           		<li><a href="#">Mis datos personales</a></li>
-				           		<li><a href="#">Mis propiedades</a></li>
-				            	<li><a href="#">Mis reservas</a></li>
-				            	<li><a href="#">Mis preguntas</a></li>
-				          	</ul>
+			          		<ul class="dropdown-menu">
+			            		<li><a href="user_data_list.php">Mis datos personales</a></li>
+			            		<li><a href="#">Mis propiedades</a></li>
+			            		<li><a href="#">Mis reservas</a></li>
+			            		<li><a href="#">Mis preguntas</a></li>
+			            		<?php
+			    				if ($_SESSION['rol'] == 1){
+								echo '<li role="separator" class="divider"></li>
+			            		<li><a href="#">Hazte premium!</a></li>';
+			            		}	
+			            		?>
+			          		</ul>
 			          	</div>
 						<button type="button" class="btn btn-danger navbar-btn" onClick="window.location.href='session_close.php'">Cerrar Sesion</button>
 			    	</ul>
