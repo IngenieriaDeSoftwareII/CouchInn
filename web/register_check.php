@@ -1,4 +1,9 @@
 <?php
+session_start();
+
+if (isset ($_SESSION['rol'])){
+    header("Location: index.php");
+}
 
 $host_db = "localhost";
 $user_db = "root";

@@ -1,4 +1,5 @@
 <?php
+session_start();
 
     function property_kind_delete($id_propiedad) {
 			$host_db = "localhost";

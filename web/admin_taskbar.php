@@ -21,7 +21,7 @@
 			        	<li><a href="#">Publicar propiedad</a></li>
 			      		<form class="navbar-form navbar-left" role="search">
 			       		<div class="form-group">
-			          		<input type="text" class="form-control" placeholder="Buscar propiedad">
+			          		<input type="text" class="form-control" placeholder="¿A dónde vas?">
 			        	</div>
 			        	<button type="submit" class="btn btn-default">Buscar</button>
 			      		</form>
@@ -33,8 +33,8 @@
 						    Administracion <span class="caret"></span>
 							</button>
 			         		<ul class="dropdown-menu">			            		
+			         			<li><a href="property_kind.php">Agregar tipo propiedad</a></li>
 			         			<li><a href="property_kind_list.php">Listado tipo propiedades</a></li>
-			            		<li><a href="property_kind.php">Agregar tipo propiedad</a></li>
 			            		<li><a href="users_list.php">Listado usuarios</a></li>
 			          		</ul>
 		          		</div>
