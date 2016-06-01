@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 30-05-2016 a las 19:28:21
+-- Tiempo de generación: 01-06-2016 a las 18:25:43
 -- Versión del servidor: 10.1.9-MariaDB
 -- Versión de PHP: 5.6.15
 
@@ -63,6 +63,18 @@ CREATE TABLE `tipo_propiedad` (
   `descripcion` varchar(800) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Volcado de datos para la tabla `tipo_propiedad`
+--
+
+INSERT INTO `tipo_propiedad` (`id_tipo_propiedad`, `nombre`, `descripcion`) VALUES
+(1, 'Departamento', 'Apartamento privado'),
+(2, 'Habitacion Privada Premium', 'Habitacion privada con bano privado'),
+(3, 'Paihouse', 'Baticueva de los pibes para comer, dormir y convertirse en genios informáticos'),
+(4, 'Habitacion Privada Regular', 'Habitacion privada con bano compartido'),
+(5, 'Habitacion Compartida Premium', 'Habitacion compartida con bano propio'),
+(6, 'Habitacion Compartida Regular', 'Habitacion compartida sin bano propio');
+
 -- --------------------------------------------------------
 
 --
@@ -89,9 +101,11 @@ INSERT INTO `ubicacion` (`id_ubicacion`, `calle`, `numero`, `piso`, `departament
 (1, '99999', 99999, 99999, '99999', 'Argentina', 'Buenos Aires', 'La Plata', 99999),
 (15, '14b', 959, 0, '', 'Argentina', 'Buenos Aires', 'La Plata', 1896),
 (16, '413', 0, 0, '', 'Argentina', 'Buenos Aires', 'La Plata', 1894),
-(26, 'irala', 600, 10, 'A', 'argentina', 'buenos aires', 'paternal', 1894),
-(29, '', 0, 0, '', '', '', '', 0),
-(30, '', 0, 0, '', '', '', '', 0);
+(35, '117', 359, 0, '', 'Argentina', 'Buenos Aires', 'La Plata', 1900),
+(44, '14b', 959, 0, '', 'Argentina', 'Buenos Aires', 'La Plata', 1896),
+(45, '14b', 959, 0, '', 'Argentina', 'Buenos Aires', 'La Plata', 1896),
+(46, '14b', 959, 0, '', 'Argentina', 'Buenos Aires', 'La Plata', 1896),
+(47, '14b', 959, 0, '', 'Argentina', 'Buenos Aires', 'La Plata', 1896);
 
 -- --------------------------------------------------------
 
@@ -105,7 +119,7 @@ CREATE TABLE `usuario` (
   `contrasena` varchar(16) NOT NULL,
   `nombre` varchar(100) NOT NULL,
   `apellido` varchar(100) NOT NULL,
-  `rol` int(1) NOT NULL,
+  `rol` int(1) NOT NULL DEFAULT '1',
   `dni` int(8) NOT NULL,
   `id_ubicacion` int(11) NOT NULL,
   `email` varchar(100) NOT NULL,
@@ -117,11 +131,11 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`id_usuario`, `nombre_usuario`, `contrasena`, `nombre`, `apellido`, `rol`, `dni`, `id_ubicacion`, `email`, `telefono`) VALUES
-(1, 'admin', 'administrador', 'Ariel', 'Sobrado', 1, 99999999, 1, 'asobrado@gmail.com', '99999'),
-(11, 'Kirizzi', '123456', 'Ivone Paula', 'Rizzi', 0, 18459495, 15, 'kirizzi@hotmail.com.ar', '4724112'),
-(12, 'Ramicortes94', 'paiputete', 'Ramiro', 'Cortes', 0, 38320362, 16, 'ramirocortes7@gmail.com', '2216022281'),
-(13, 'Agusdeluca96', 'paiputito', 'Agustin', 'De Luca', 0, 39557795, 15, 'agus.lp.96@hotmail.com', '2216063263'),
-(17, 'JRRiquelme', 'aguanteboca', 'Juan Roman', 'Riquelme', 0, 10, 26, 'riquelme', '0221697834');
+(1, 'admin', 'administrador', 'Ariel', 'Sobrado', 0, 99999999, 1, 'asobrado@gmail.com', '99999'),
+(4, 'Kirizzi', '123456', 'Ivone Paula', 'Rizzi', 1, 18459495, 15, 'kirizzi@hotmail.com.ar', '4724112'),
+(11, 'Agusdeluca96', 'paiputito', 'Agustin', 'De Luca', 1, 39557795, 15, 'agus.lp.96@hotmail.com', '2216063263'),
+(12, 'Ramicortes94', 'paiputete', 'Ramiro', 'Cortes', 2, 38320362, 16, 'ramirocortes7@gmail.com', '2216022281'),
+(21, 'Agusvigno', 'paiputon', 'Agustin', 'Vignolo', 1, 33590391, 35, 'agus.lp@hotmail.com', '2213041855');
 
 --
 -- Índices para tablas volcadas
@@ -179,17 +193,17 @@ ALTER TABLE `propiedad`
 -- AUTO_INCREMENT de la tabla `tipo_propiedad`
 --
 ALTER TABLE `tipo_propiedad`
-  MODIFY `id_tipo_propiedad` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_tipo_propiedad` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT de la tabla `ubicacion`
 --
 ALTER TABLE `ubicacion`
-  MODIFY `id_ubicacion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `id_ubicacion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 --
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
