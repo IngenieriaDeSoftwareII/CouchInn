@@ -14,7 +14,7 @@ session_start();
   	<body>
     	<?php
 		if (isset ($_SESSION['rol'])){
-			if ($_SESSION['rol'] == 0){
+			if ($_SESSION['rol'] == 1){
 				header("Location: index.php");
 			}
 			else{

@@ -18,11 +18,15 @@ $result = mysql_query($sql);
 $count = mysql_num_rows($result);
 // If result matched $username and $password
 if($count == 1){
+	$_SESSION['username'] = $username;
 	$rol_query = "SELECT rol FROM usuario WHERE (nombre_usuario = '$_POST[username]')";
 	$rol = mysql_query($rol_query);
-	$_SESSION['username'] = $username;
 	$row = mysql_fetch_assoc($rol);
 	$_SESSION['rol'] = $row['rol'];
+	$id_query = "SELECT id_usuario FROM usuario WHERE (nombre_usuario = '$_POST[username]')";
+	$id = mysql_query($id_query);
+	$row2 = mysql_fetch_assoc($id);
+	$_SESSION['id'] = $row['id'];
 	
 	if ($_SESSION['rol'] == 0){
 		$_SESSION['user'] = true;

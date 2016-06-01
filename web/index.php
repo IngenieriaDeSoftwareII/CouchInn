@@ -22,18 +22,9 @@ session_start();
   	</head>
 	<body>
 		<?php
-		if (isset ($_SESSION['rol'])){
-			if ($_SESSION['rol'] == 0){
-				include 'user_taskbar.php';
-			}
-			else{
-				include 'admin_taskbar.php';
-			}
-		}
-		else{
-			include 'guest_taskbar.php';
-		}
+		include 'taskbar_manager.php';
 		?>
+		
 		<nav>
 		        <h2><font face="Arial" size=5 color=grey><b>Un viaje de mil millas comienza con un solo paso...</b></font></h2> 
 	    </nav>
