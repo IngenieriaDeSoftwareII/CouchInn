@@ -49,13 +49,13 @@ session_start();
 			$conexion = mysql_connect($host_db, $user_db, $pass_db);
 			mysql_select_db('couchInn', $conexion) or die("No se puede seleccionar la base de datos.");
 
-			// $sql = "SELECT nombre FROM tipo_propiedad WHERE (id_tipo_propiedad = $id_propiedad)";
-			// $nombre_propiedad = mysql_query($sql);
-			// $row = mysql_fetch_assoc($nombre_propiedad);
+			$sql = "SELECT nombre FROM tipo_propiedad WHERE (id_tipo_propiedad = $id_propiedad)";
+			$nombre_propiedad = mysql_query($sql);
+			$row = mysql_fetch_assoc($nombre_propiedad);
 			// echo $nombre_propiedad;
-			// $sql = "SELECT descripcion FROM tipo_propiedad WHERE (id_tipo_propiedad = $id_propiedad)";
-			// $descripcion_propiedad = mysql_query($sql);
-			// $row = mysql_fetch_assoc($descripcion_propiedad);
+			$sql2 = "SELECT descripcion FROM tipo_propiedad WHERE (id_tipo_propiedad = $id_propiedad)";
+			$descripcion_propiedad = mysql_query($sql2);
+			$row2 = mysql_fetch_assoc($descripcion_propiedad);
 			// echo $descripcion_propiedad;
 		?>
 
@@ -68,13 +68,13 @@ session_start();
 							<div class="row">
 								<div class="col-sm-6 form-group">
 									<label>Nombre</label>
-									<input type="text" maxlength="100" name="nombre" id="nombre" placeholder="Ingresa el nombre aqui..." class="form-control">
+									<input type="text" maxlength="100" name="nombre" id="nombre" placeholder="<?php echo $row['nombre'];?>" class="form-control">
 								</div>
 							</div>
 							<div class="row">
 								<div class="col-sm-12 form-group">
 									<label>Descripción</label>
-									<textarea type="long-text" maxlength="800" name="descripcion" id="descripcion" rows="6" placeholder="Ingresa la descripción aqui.." class="form-control"></textarea>
+									<textarea type="long-text" maxlength="800" name="descripcion" id="descripcion" rows="6" placeholder="<?php echo $row2['descripcion'];?>" class="form-control"></textarea>
 								</div>				
 							</div>
 						<br></br>

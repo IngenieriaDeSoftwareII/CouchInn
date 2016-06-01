@@ -36,6 +36,12 @@
 			            		<li><a href="#">Mis propiedades</a></li>
 			            		<li><a href="#">Mis reservas</a></li>
 			            		<li><a href="#">Mis preguntas</a></li>
+			            		<?php
+			    				if ($_SESSION['rol'] == 1){
+								echo '<li role="separator" class="divider"></li>
+			            		<li><a href="#">Hazte premium!</a></li>';
+			            		}	
+			            		?>
 			          		</ul>
 			          	</div>
 						<button type="button" class="btn btn-danger navbar-btn" onClick="window.location.href='session_close.php'">Cerrar Sesion</button>

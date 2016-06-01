@@ -58,6 +58,14 @@ session_start();
 							<td> <?php echo $tabla["dni"];?></td>
 							<td> <?php echo $tabla["telefono"];?></td>
 							<td> <?php echo $tabla["email"];?></td>
+							<?php
+								if ($tabla["rol"] == 0){
+									echo '<td> <button type="submit" name="premium" id="premium" class="btn btn-warning btn-group-xs">Premium</button> </td>';
+								}
+								else{
+									echo "<td> </td>";
+								}
+							?>
 						</tr>
 					<?php
 					}
