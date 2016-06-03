@@ -18,7 +18,7 @@
 		  			<ul class="nav navbar-nav">
 		  				<li class="navbar-left"><a href="index.php"><img src="Logo.png" width="150" height="30"></a></li>
 			      		<li><a href="about_us.php">Acerca de...</a></li>
-			        	<li><a href="#">Publicar propiedad</a></li>
+			        	<li><a href="property_publish_without_login.php">Publicar propiedad</a></li>
 			      		<form class="navbar-form navbar-left" role="search">
 			       		<div class="form-group">
 			          		<input type="text" class="form-control" placeholder="Buscar propiedad">
