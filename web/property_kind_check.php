@@ -27,7 +27,8 @@ else{
 		echo "<script>";
 		echo "alert('$mensaje');";  
 		echo "window.location = 'property_kind.php';";
-		echo "</script>";  
+		echo "</script>";
+	 	//header("Location: property_kind_list.php");  
 	}
 }
 ?>

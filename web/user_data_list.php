@@ -12,7 +12,7 @@ session_start();
 	    <title>Couch Inn - Reserva tu proximo Hospedaje!</title>
 	    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
 
-	 //    <script language="Javascript"> 
+	    <script language="Javascript"> 
 		// function confirmar(){ 
 		// 	confirmar=confirm("¿Estas seguro que deseas eliminar tu cuenta de forma permanente?"); 
 		// 	if (confirmar){
@@ -121,7 +121,7 @@ session_start();
 						<br></br>
 						<div align="center">
 							<button type="submit" class="btn btn-primary navbar-btn">Modificar</button>
-							<button type="button" class="btn btn-danger navbar-btn" onClick="window.location.href='index.php'">Eliminar Cuenta</button>
+							<a type="submit" class="btn btn-danger navbar-btn" href= user_delete.php onclick="return confirm('Esta seguro que desea eliminar su cuenta de forma permanente?')"')">Eliminar Cuenta</a>
 						</div>				
 						</div>
 					</form> 
