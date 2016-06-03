@@ -69,7 +69,7 @@ session_start();
 								</div>	
 								<div class="col-sm-6 form-group">
 									<label>Contraseña</label>
-									<span id="nombre" class="form-control"> <?php echo $usuario["contrasena"];?> </span>
+									<span id="nombre" class="form-control"> ************* </span>
 								</div>	
 							</div>
 							<div class="row">

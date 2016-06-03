@@ -50,7 +50,7 @@ session_start();
 								<td> <?php echo $tabla["nombre"];?></td>
 								<td> <?php echo $tabla["descripcion"];?></td>
 								<td> <button type="submit" name="modificar" id="modificar" value="<?php echo htmlspecialchars($var);?>" class="btn btn-warning btn-group-xs">Modificar</button> </td>
-								<td> <button type="submit" name="eliminar" id="eliminar" value="<?php echo htmlspecialchars($var);?>" class="btn btn-danger btn-group-xs">Eliminar</button> </td>
+								<td> <button type="submit" name="eliminar" id="eliminar" onclick="return confirm('Esta seguro que desea eliminar su cuenta de forma permanente?')" value="<?php echo htmlspecialchars($var);?>" class="btn btn-danger btn-group-xs">Eliminar</button> </td>
 							</tr>
 							<?php
 							}

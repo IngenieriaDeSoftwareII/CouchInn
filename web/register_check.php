@@ -34,7 +34,12 @@ else{
  		echo "Error al crear el usuario." . "<br />";
  	}
  	else{
-		header("Location: login.php");
+ 		mysql_close($conexion);
+	 	$mensaje = "El registro ha sido completado con exito! Ya puede iniciar sesion con su nombre de usuario y contraseña";
+		echo "<script>";
+		echo "alert('$mensaje');";  
+		echo "window.location = 'login.php';";
+		echo "</script>";
 	}
 }
 mysql_close($conexion)

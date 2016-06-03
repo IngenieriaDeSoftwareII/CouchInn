@@ -22,7 +22,12 @@ $query2 = "UPDATE ubicacion SET calle = '$_POST[calle]', numero = '$_POST[numero
 
 mysql_query($query, $conexion);
 mysql_query($query2, $conexion);
-header("Location: user_data_list.php");
+mysql_close($conexion);
+$mensaje = "Su información personal ha sido modificada con exito.";
+echo "<script>";
+echo "alert('$mensaje');";  
+echo "window.location = 'user_data_list.php';";
+echo "</script>";
 // if ((!mysql_query($query, $conexion)) AND (!mysql_query($query2, $conexion))){
 // 	die('Error: ' . mysql_error());
 // 	echo "Error al actualizar informacion personal del usuario." . "<br />";
@@ -32,6 +37,5 @@ header("Location: user_data_list.php");
 // 	exit;
 // }
 
-mysql_close($conexion);
 
 ?>
