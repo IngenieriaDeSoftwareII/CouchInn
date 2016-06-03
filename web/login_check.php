@@ -34,10 +34,15 @@ if($count == 1){
 	else {
 		$_SESSION['admin'] = true;	
 	}
+	mysql_close($conexion);
 	header("Location: index.php");
 }
 else {
-echo "Username o Password estan incorrectos.";
-echo "<a href='login.php'>Volver a Intentarlo</a>";
+	mysql_close($conexion);
+	$mensaje = "Nombre de usuario o contraseña incorrectos.";
+	echo "<script>";
+	echo "alert('$mensaje');";  
+	echo "window.location = 'login.php';";
+echo "</script>";
 }
 ?>
