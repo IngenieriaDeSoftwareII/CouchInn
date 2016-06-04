@@ -56,7 +56,10 @@ session_start();
 							?>
 						</table>
 					</div>
-				</form> 
+				</form>
+			<div align="center">
+				<a href="property_kind.php"><button type="button" class="btn btn-primary navbar-btn">Agregar tipo propiedad</button></a>
+			</div>	
 		</div>
 
     	<script src="js/jquery.js"></script>

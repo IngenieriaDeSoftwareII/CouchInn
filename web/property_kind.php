@@ -63,7 +63,10 @@ session_start();
 						<div align="center">
 							<button type="submit" class="btn btn-primary navbar-btn">Agregar</button>	
 							<button type="reset" class="btn btn-default navbar-btn">Restablecer</button>
-						</div>				
+						</div>
+						<div align="center">
+							<a href="property_kind_list.php"><button type="button" class="btn btn-warning navbar-btn">Ver Tipos de Propiedades</button></a>
+						</div>
 					</div>
 				</form> 
 			</div>
