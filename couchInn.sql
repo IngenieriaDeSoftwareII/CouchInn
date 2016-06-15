@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 04-06-2016 a las 01:54:01
+-- Tiempo de generación: 15-06-2016 a las 20:45:05
 -- Versión del servidor: 10.1.13-MariaDB
 -- Versión de PHP: 5.6.21
 
@@ -45,6 +45,20 @@ INSERT INTO `foto` (`id_foto`, `url`, `id_propiedad`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `pregunta`
+--
+
+CREATE TABLE `pregunta` (
+  `id_pregunta` int(11) NOT NULL,
+  `descripción` varchar(500) NOT NULL,
+  `respuesta` varchar(500) DEFAULT NULL,
+  `id_usuario` int(11) NOT NULL,
+  `id_propiedad` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `propiedad`
 --
 
@@ -71,6 +85,21 @@ INSERT INTO `propiedad` (`id_propiedad`, `nombre`, `capacidad`, `numero_habitaci
 (2, 'Casa de Dory', 5, 2, 2, 1, 1, 1200, 'Hola soy Dory, amiga de Marlyn y alquilo mi casa para buHola soy Dory, amiga de MarlHola soy Dory.', 5, 501),
 (3, 'Lo de Peit', 1, 1, 1, 0, 0, 65, 'Departamento de dos ambientes a 6 cuadras del centro de la ciudad ideal para turismos. Cercano a la zona del bosque y de las facultades.', 1, 502),
 (4, 'El refugio', 4, 2, 1, 0, 0, 260, 'Casa en el medio de la montaña El Mordisco del Diablo. Hermosa vista de la ciudad.', 3, 503);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `reserva_propiedad`
+--
+
+CREATE TABLE `reserva_propiedad` (
+  `id_reserva_propiedad` int(11) NOT NULL,
+  `estado` int(11) NOT NULL,
+  `fecha_inicio_reserva` date NOT NULL,
+  `fecha_fin_reserva` date NOT NULL,
+  `id_huésped` int(11) NOT NULL,
+  `id_propiedad` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -151,18 +180,19 @@ CREATE TABLE `usuario` (
   `dni` int(8) NOT NULL,
   `id_ubicacion` int(11) NOT NULL,
   `email` varchar(100) NOT NULL,
-  `telefono` varchar(100) NOT NULL
+  `telefono` varchar(100) NOT NULL,
+  `fecha_registro` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `usuario`
 --
 
-INSERT INTO `usuario` (`id_usuario`, `nombre_usuario`, `contrasena`, `nombre`, `apellido`, `rol`, `dni`, `id_ubicacion`, `email`, `telefono`) VALUES
-(1, 'admin', 'administrador', 'Ariel', 'Sobrado', 0, 99999999, 1, 'asobrado@gmail.com', '99999'),
-(4, 'Kirizzi', '123456', 'Ivone Paula', 'Rizzi', 2, 18459495, 15, 'kirizzi@hotmail.com.ar', '4724112'),
-(11, 'Agusdeluca96', 'paiputito', 'Agustin', 'De Luca', 2, 39557795, 15, 'agus.lp.96@hotmail.com', '2216063263'),
-(12, 'Ramicortes94', 'paiputete', 'Ramiro Roman', 'Cortes', 1, 38320362, 16, 'ramirocortes7@gmail.com', '2216022281');
+INSERT INTO `usuario` (`id_usuario`, `nombre_usuario`, `contrasena`, `nombre`, `apellido`, `rol`, `dni`, `id_ubicacion`, `email`, `telefono`, `fecha_registro`) VALUES
+(1, 'admin', 'administrador', 'Ariel', 'Sobrado', 0, 99999999, 1, 'asobrado@gmail.com', '99999', '0000-00-00'),
+(4, 'Kirizzi', '123456', 'Ivone Paula', 'Rizzi', 2, 18459495, 15, 'kirizzi@hotmail.com.ar', '4724112', '0000-00-00'),
+(11, 'Agusdeluca96', 'paiputito', 'Agustin', 'De Luca', 1, 39557795, 15, 'agus.lp.96@hotmail.com', '2216063263', '0000-00-00'),
+(12, 'Ramicortes94', 'paiputete', 'Ramiro Roman', 'Cortes', 1, 38320362, 16, 'ramirocortes7@gmail.com', '2216022281', '0000-00-00');
 
 --
 -- Índices para tablas volcadas
@@ -176,12 +206,28 @@ ALTER TABLE `foto`
   ADD KEY `id_propiedad` (`id_propiedad`);
 
 --
+-- Indices de la tabla `pregunta`
+--
+ALTER TABLE `pregunta`
+  ADD PRIMARY KEY (`id_pregunta`),
+  ADD KEY `id_usuario` (`id_usuario`),
+  ADD KEY `id_propiedad` (`id_propiedad`);
+
+--
 -- Indices de la tabla `propiedad`
 --
 ALTER TABLE `propiedad`
   ADD PRIMARY KEY (`id_propiedad`),
   ADD KEY `id_tipo_propiedad` (`id_tipo_propiedad`),
   ADD KEY `id_ubicacion` (`id_ubicacion`);
+
+--
+-- Indices de la tabla `reserva_propiedad`
+--
+ALTER TABLE `reserva_propiedad`
+  ADD PRIMARY KEY (`id_reserva_propiedad`),
+  ADD KEY `id_huésped` (`id_huésped`),
+  ADD KEY `id_propiedad` (`id_propiedad`);
 
 --
 -- Indices de la tabla `tipo_propiedad`
@@ -212,10 +258,20 @@ ALTER TABLE `usuario`
 ALTER TABLE `foto`
   MODIFY `id_foto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
+-- AUTO_INCREMENT de la tabla `pregunta`
+--
+ALTER TABLE `pregunta`
+  MODIFY `id_pregunta` int(11) NOT NULL AUTO_INCREMENT;
+--
 -- AUTO_INCREMENT de la tabla `propiedad`
 --
 ALTER TABLE `propiedad`
   MODIFY `id_propiedad` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+--
+-- AUTO_INCREMENT de la tabla `reserva_propiedad`
+--
+ALTER TABLE `reserva_propiedad`
+  MODIFY `id_reserva_propiedad` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT de la tabla `tipo_propiedad`
 --
