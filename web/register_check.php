@@ -26,7 +26,7 @@ else{
  		mysql_query($query2);
  	}
  	// $ubicacion = "SELECT id_ubicacion FROM ubicacion WHERE (calle = '$_POST[calle]') AND (numero = '$_POST[numero]') AND (piso = '$_POST[piso]') AND (departamento = '$_POST[departamento]') AND (pais = '$_POST[pais]') AND (provincia = '$_POST[provincia]') AND (ciudad = '$_POST[ciudad]') AND (codigo_postal = '$_POST[codigo_postal]')";
-	$query = "INSERT INTO usuario (nombre_usuario, contrasena, nombre, apellido, dni, email, telefono, id_ubicacion, rol) VALUES ('$_POST[username]', '$_POST[password]','$_POST[nombre]', '$_POST[apellido]','$_POST[dni]', '$_POST[email]','$_POST[telefono]', (SELECT id_ubicacion FROM ubicacion WHERE (calle = '$_POST[calle]') AND (numero = '$_POST[numero]') AND (piso = '$_POST[piso]') AND (departamento = '$_POST[departamento]') AND (pais = '$_POST[pais]') AND (provincia = '$_POST[provincia]') AND (ciudad = '$_POST[ciudad]') AND (codigo_postal = '$_POST[codigo_postal]')), 1)";
+	$query = "INSERT INTO usuario (nombre_usuario, contrasena, nombre, apellido, dni, email, telefono, id_ubicacion, rol, fecha_registro) VALUES ('$_POST[username]', '$_POST[password]','$_POST[nombre]', '$_POST[apellido]','$_POST[dni]', '$_POST[email]','$_POST[telefono]', (SELECT id_ubicacion FROM ubicacion WHERE (calle = '$_POST[calle]') AND (numero = '$_POST[numero]') AND (piso = '$_POST[piso]') AND (departamento = '$_POST[departamento]') AND (pais = '$_POST[pais]') AND (provincia = '$_POST[provincia]') AND (ciudad = '$_POST[ciudad]') AND (codigo_postal = '$_POST[codigo_postal]')), 1, curdate())";
 	if (!mysql_query($query, $conexion)){
  		die('Error: ' . mysql_error());
  		echo "Error al crear el usuario." . "<br />";
