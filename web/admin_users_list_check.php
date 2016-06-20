@@ -60,7 +60,7 @@ session_start();
                 </div>
             </form>
             <div align="center">
-                <a href="users_list.php"><button type="button" class="btn btn-primary navbar-btn">Listar Todos los Usuarios</button></a>
+                <a href="admin_users_list.php"><button type="button" class="btn btn-primary navbar-btn">Listar Todos los Usuarios</button></a>
             </div>
         </div>
 

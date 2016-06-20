@@ -35,8 +35,8 @@
 			         		<ul class="dropdown-menu">			            		
 			         			<li><a href="property_kind.php">Agregar tipo propiedad</a></li>
 			         			<li><a href="property_kind_list.php">Listado tipo propiedades</a></li>
-			            		<li><a href="users_list.php">Listado usuarios</a></li>
-			            		<li><a href="#">Listado de ganancias</a></li>
+			            		<li><a href="admin_users_list.php">Listado usuarios</a></li>
+			            		<li><a href="admin_earnings_list.php">Listado de ganancias</a></li>
 			          		</ul>
 		          		</div>
 		          		<div class="btn-group">
