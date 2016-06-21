@@ -26,6 +26,7 @@ session_start();
 			$propiedad_ubicacion = mysql_fetch_array($result3);
 			$result4 = mysql_query("SELECT * FROM tipo_propiedad WHERE id_tipo_propiedad = '$propiedad[id_tipo_propiedad]'");
 			$tipo_propiedad = mysql_fetch_array($result4);
+			$var = $result["id_propiedad"]
 	    ?>
 	    <div class="container">
     	<h1 class="well"><?php echo $propiedad['nombre'];?> | <?php echo $propiedad_ubicacion['ciudad'];?> </h1>
@@ -43,15 +44,26 @@ session_start();
 	</div>
 					
 	<div class="container">
+	<form action="property_reservation.php">
 		<div class="col-lg-12 well">
+			<div class="row">
+				<div class="col-sm-2 form-group">
+					<label>Fecha de Llegada</label>
+					<input type="text" maxlength="10" name="fecha_inicio" id="fecha_inicio" placeholder="DD-MM-AAAA" class="form-control">
+				</div>
+				<div class="col-sm-2 form-group">
+					<label>Fecha de Partida</label>
+					<input type="text" maxlength="10" name="fecha_inicio" id="fecha_inicio" placeholder="DD-MM-AAAA" class="form-control">
+				</div>
+				<div class="col-sm-2 form-group">
+					<label>Precio por dia</label>
+					<p readonly id="nombre" class="form-control"> <?php echo $propiedad['precio'];?> </p>
+				</div>
+			</div>
 			<div class="row">
 				<div class="col-sm-8 form-group">
 					<label>Ubicacion</label>
 					<p readonly id="nombre" class="form-control"> <?php echo $propiedad_ubicacion['ciudad'];?>, <?php echo $propiedad_ubicacion['provincia'];?>, <?php echo $propiedad_ubicacion['pais'];?> </p>
-				</div>
-				<div class="col-sm-3 form-group">
-					<label>Precio</label>
-					<p readonly id="nombre" class="form-control"> <?php echo $propiedad['precio'];?> </p>
 				</div>
 			</div>
 			<div class="row">					
@@ -92,9 +104,12 @@ session_start();
 				</div>	
 			</div>
 			<div align="center">
-				<button type="submit" class="btn btn-primary navbar-btn">Alquilar</button>
+				<div>
+				<button type="submit" name="prop" id="prop" value="<?php echo htmlspecialchars($var);?>">Alquilar</button>
+				</div>
 			</div>
 		</div>
+	</form>
 	</div>
     <script src="js/jquery.js"></script>
     <script src="js/bootstrap.min.js"></script>
