@@ -42,12 +42,32 @@ session_start();
 			function query_validation(){
 				var fecha1 = document.getElementById("fecha1").value;
 				var fecha2 = document.getElementById("fecha2").value;
+				var numero_tarjeta = document.getElementById("numero_tarjeta").value;
+				var codigo_seguridad = document.getElementById("codigo_seguridad").value;
 				if (fecha1 == ''){
 					alert("Por favor ingrese la fecha de inicio.");
 					return false;
 				}
 				if (fecha2 == ''){
 					alert("Por favor ingrese la fecha de fin.");
+					return false;
+				}
+				if (numero_tarjeta == ''){
+					alert("Por favor ingrese el numero de tarjeta.");
+					return false;
+				}
+				if (codigo_seguridad == ''){
+					alert("Por favor ingrese el codigo de seguridad.");
+					return false;
+				}
+				$desde = $_POST['fecha1'];
+				$hasta = $_POST['fecha2'];
+				$desde = str_replace('/', '-', $desde);
+				$hasta = str_replace('/', '-', $hasta);
+				$desde = date('Y-m-d', strtotime($desde));
+				$hasta = date('Y-m-d', strtotime($hasta));
+				if ($desde >= $hasta){
+					alert("La fecha de llegada no puede ser posterior a la de partida");
 					return false;
 				}
 			}
@@ -79,38 +99,43 @@ session_start();
 
 		<div class="container">
 			<div class="col-lg-12 well">
-					<form name="form1" method="post" action="admin_earnings_list_check.php" onsubmit="return query_validation()">
+					<form name="form1" method="post" action="property_reservation_check.php" onsubmit="return query_validation()">
 						<div class="row">
+							<div class="col-sm-3 form-group">
+								<label>Nombre de la Propiedad</label>
+								<p readonly id="nombre" class="form-control"> <?php echo $result['nombre'];?> </p>
+							</div>
 							<div class="col-sm-3 form-group">
 								<label>Precio por dia</label>
 								<p readonly id="nombre" class="form-control"> <?php echo $result['precio'];?> </p>
 							</div>
 						</div>
 						<div class="row">
-							<div class="col-sm-4 form-group">
-								<label for="fecha">Fecha de Inicio
+							<div class="col-sm-3 form-group">
+								<label for="fecha">Fecha de llegada
 								<input type="text" name="fecha1" id="fecha1" required="required" value="" />
 								</label>
 							</div>
-						</div>
-						<div class="row">
-							<div class="col-sm-4 form-group">
-								<label for="fecha">Fecha de Finalizacion
+							<div class="col-sm-3 form-group">
+								<label for="fecha">Fecha de partida
 								<input type="text" name="fecha2" id="fecha2" value="" />
 								</label>
 							</div>
 						</div>
 						<div class="row">
-							<div class="col-sm-2 form-group">
+							<div class="col-sm-3 form-group">
 								<label>Numero de Tarjeta</label>
 								<input type="text" maxlength="16" name="numero_tarjeta" id="numero_tarjeta" placeholder="Numero de tarjeta" class="form-control">
 							</div>
-						</div>
-						<div class="row">
-							<div class="col-sm-2 form-group">
+							<div class="col-sm-3 form-group">
 								<label>Codigo de Seguridad</label>
 								<textarea type="password" maxlength="3" name="codigo_seguridad" id="codigo_seguridad" rows="1" placeholder="Codigo de seguridad" class="form-control"></textarea>
 							</div>				
+						</div>
+						<div align="center">
+							<div>
+								<button type="submit" class="btn btn-default navbar-btn" name="prop" id="prop" value="<?php echo $_POST['prop'];?>">Alquilar</button>
+							</div>
 						</div>
 					</form>	
 			</div>					

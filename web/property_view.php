@@ -26,90 +26,88 @@ session_start();
 			$propiedad_ubicacion = mysql_fetch_array($result3);
 			$result4 = mysql_query("SELECT * FROM tipo_propiedad WHERE id_tipo_propiedad = '$propiedad[id_tipo_propiedad]'");
 			$tipo_propiedad = mysql_fetch_array($result4);
-			$var = $result["id_propiedad"]
+			$var = $result["id_propiedad"];
 	    ?>
 	    <div class="container">
     	<h1 class="well"><?php echo $propiedad['nombre'];?> | <?php echo $propiedad_ubicacion['ciudad'];?> </h1>
 		<div class="col-lg-12 well">
 			<div class="row">
-				<form name="form1" method="post" action="user_data_modify.php" onsubmit="return confirmar()">
-					<div class="col-sm-12">
-						<div class="row">
-							<img src="<?php echo $foto_propiedad['url'];?>" alt="House View" style="width:1130px;height:720px;">
-						</div>
+				<div class="col-sm-12">
+					<div class="row">
+						<img src="<?php echo $foto_propiedad['url'];?>" alt="House View" style="width:1130px;height:720px;">
 					</div>
-				</form>
+				</div>
 			</div>
 		</div>
 	</div>
 					
 	<div class="container">
-	<form action="property_reservation.php">
-		<div class="col-lg-12 well">
-			<div class="row">
-				<div class="col-sm-2 form-group">
-					<label>Fecha de Llegada</label>
-					<input type="text" maxlength="10" name="fecha_inicio" id="fecha_inicio" placeholder="DD-MM-AAAA" class="form-control">
+		<form name="form" method="post" action="property_reservation.php">
+			<div class="col-lg-12 well">
+				<div class="row">
+					<div class="col-sm-2 form-group">
+						<label>Fecha de Llegada</label>
+						<input type="text" maxlength="10" name="fecha_inicio" id="fecha_inicio" placeholder="DD-MM-AAAA" class="form-control">
+					</div>
+					<div class="col-sm-2 form-group">
+						<label>Fecha de Partida</label>
+						<input type="text" maxlength="10" name="fecha_inicio" id="fecha_inicio" placeholder="DD-MM-AAAA" class="form-control">
+					</div>
+					<div class="col-sm-2 form-group">
+						<label>Precio por dia</label>
+						<p readonly id="nombre" class="form-control"> <?php echo $propiedad['precio'];?> </p>
+					</div>
 				</div>
-				<div class="col-sm-2 form-group">
-					<label>Fecha de Partida</label>
-					<input type="text" maxlength="10" name="fecha_inicio" id="fecha_inicio" placeholder="DD-MM-AAAA" class="form-control">
+				<div class="row">
+					<div class="col-sm-8 form-group">
+						<label>Ubicacion</label>
+						<p readonly id="nombre" class="form-control"> <?php echo $propiedad_ubicacion['ciudad'];?>, <?php echo $propiedad_ubicacion['provincia'];?>, <?php echo $propiedad_ubicacion['pais'];?> </p>
+					</div>
 				</div>
-				<div class="col-sm-2 form-group">
-					<label>Precio por dia</label>
-					<p readonly id="nombre" class="form-control"> <?php echo $propiedad['precio'];?> </p>
+				<div class="row">					
+					<div class="col-sm-6 form-group">
+						<label>Direccion</label>
+						<span readonly id="nombre" class="form-control"> <?php echo $propiedad_ubicacion['calle'];?>, <?php echo $propiedad_ubicacion['numero'];?>, <?php echo $propiedad_ubicacion['piso'];?>, <?php echo $propiedad_ubicacion['departamento'];?> </span>
+					</div>
+					<div class="col-sm-6 form-group">
+						<label>Tipo de Propiedad</label>
+						<span readonly id="nombre" class="form-control"> <?php echo $tipo_propiedad['nombre'];?> </span>
+					</div>	
+				</div>
+				<div class="row">
+					<div class="col-sm-2 form-group">
+						<label>Capacidad</label>
+						<span readonly id="nombre" class="form-control"> <?php echo $propiedad["capacidad"];?> </span>
+					</div>	
+					<div class="col-sm-2 form-group">
+						<label>Habitaciones</label>
+						<span readonly id="nombre" class="form-control"> <?php echo $propiedad["numero_habitaciones"];?> </span>
+					</div>	
+					<div class="col-sm-2 form-group">
+						<label>Baños</label>
+						<span readonly id="nombre" class="form-control"> <?php echo $propiedad["numero_banos"];?> </span>
+					</div>			
+					<div class="col-sm-2 form-group">
+						<label>Wifi</label>
+						<span readonly id="nombre" class="form-control"> <?php echo $propiedad["wifi"];?> </span>
+					</div>	
+					<div class="col-sm-2 form-group">
+						<label>Cochera</label>
+						<span readonly id="nombre" class="form-control"> <?php echo $propiedad["cochera"];?> </span>
+					</div>						
+				<div class="row">					
+					<div class="col-sm-12 form-group">
+						<label>Descripcion</label>
+						<textarea readonly type="long-text" maxlength="800" name="descripcion" id="descripcion" rows="4" value="<?php echo $row2['descripcion'];?>" class="form-control"> <?php echo $propiedad["descripcion"];?> </textarea>
+					</div>	
+				</div>
+				<div align="center">
+					<div>
+						<button type="submit" class="btn btn-default navbar-btn" name="prop" id="prop" value="<?php echo htmlspecialchars($var);?>">Alquilar</button>
+					</div>
 				</div>
 			</div>
-			<div class="row">
-				<div class="col-sm-8 form-group">
-					<label>Ubicacion</label>
-					<p readonly id="nombre" class="form-control"> <?php echo $propiedad_ubicacion['ciudad'];?>, <?php echo $propiedad_ubicacion['provincia'];?>, <?php echo $propiedad_ubicacion['pais'];?> </p>
-				</div>
-			</div>
-			<div class="row">					
-				<div class="col-sm-6 form-group">
-					<label>Direccion</label>
-					<span readonly id="nombre" class="form-control"> <?php echo $propiedad_ubicacion['calle'];?>, <?php echo $propiedad_ubicacion['numero'];?>, <?php echo $propiedad_ubicacion['piso'];?>, <?php echo $propiedad_ubicacion['departamento'];?> </span>
-				</div>
-				<div class="col-sm-6 form-group">
-					<label>Tipo de Propiedad</label>
-					<span readonly id="nombre" class="form-control"> <?php echo $tipo_propiedad['nombre'];?> </span>
-				</div>	
-			</div>
-			<div class="row">
-				<div class="col-sm-2 form-group">
-					<label>Capacidad</label>
-					<span readonly id="nombre" class="form-control"> <?php echo $propiedad["capacidad"];?> </span>
-				</div>	
-				<div class="col-sm-2 form-group">
-					<label>Habitaciones</label>
-					<span readonly id="nombre" class="form-control"> <?php echo $propiedad["numero_habitaciones"];?> </span>
-				</div>	
-				<div class="col-sm-2 form-group">
-					<label>Baños</label>
-					<span readonly id="nombre" class="form-control"> <?php echo $propiedad["numero_banos"];?> </span>
-				</div>			
-				<div class="col-sm-2 form-group">
-					<label>Wifi</label>
-					<span readonly id="nombre" class="form-control"> <?php echo $propiedad["wifi"];?> </span>
-				</div>	
-				<div class="col-sm-2 form-group">
-					<label>Cochera</label>
-					<span readonly id="nombre" class="form-control"> <?php echo $propiedad["cochera"];?> </span>
-				</div>						
-			<div class="row">					
-				<div class="col-sm-12 form-group">
-					<label>Descripcion</label>
-					<textarea readonly type="long-text" maxlength="800" name="descripcion" id="descripcion" rows="4" value="<?php echo $row2['descripcion'];?>" class="form-control"> <?php echo $propiedad["descripcion"];?> </textarea>
-				</div>	
-			</div>
-			<div align="center">
-				<div>
-				<button type="submit" name="prop" id="prop" value="<?php echo htmlspecialchars($var);?>">Alquilar</button>
-				</div>
-			</div>
-		</div>
-	</form>
+		</form>
 	</div>
     <script src="js/jquery.js"></script>
     <script src="js/bootstrap.min.js"></script>

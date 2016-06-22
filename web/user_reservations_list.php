@@ -57,7 +57,7 @@ session_start();
 								<td> <?php echo $tabla["fecha_fin_reserva"];?></td>
 								<td> <?php echo $tabla["estado"];?></td>
 								<?php
-								if ($tabla["estado"] == 1){ ?>									
+								if ($tabla["estado"] < 2){ ?>									
 										<td> <button type="submit" name="cancelar" id="cancelar" onclick="return confirm('Esta seguro que desea cancelar su reserva de forma permanente?')" value="<?php echo htmlspecialchars($tabla["id_reserva_propiedad"]);?>" class="btn btn-danger btn-group-xs">Cancelar</button> </td>
 								<?php
 								}
