@@ -41,8 +41,19 @@ session_start();
 		            	$result = mysql_query("SELECT * FROM foto");
 						while ($foto = mysql_fetch_array($result)){
 							$id = $foto["id_foto"];
+							$result2 = mysql_query("SELECT * FROM propiedad WHERE (id_propiedad = '$foto[id_propiedad]')");
+							$propiedad = mysql_fetch_array($result2);
+							$result3 = mysql_query("SELECT * FROM ubicacion WHERE (id_ubicacion = '$propiedad[id_ubicacion]')");
+							$propiedad_ubicacion = mysql_fetch_array($result3);
+							$id_propiedad = $foto["id_propiedad"];
 						?>
-							<a href="property_view.php?id_foto=<?php echo htmlspecialchars($id);?>"><img src="<?php echo $foto['url'];?>" style="width:1024px;height:560px;" alt="Imagen" class="mySlides"></a>
+							<div class="w3-display-container">
+								<a href="property_view.php?id_propiedad=<?php echo htmlspecialchars($id_propiedad);?>"><img src="<?php echo $foto['url'];?>" style="width:1024px;height:560px;" alt="Imagen" class="mySlides"></a>
+		                		<div class="w3-display-topright w3-large w3-container w3-padding-16 w3-text-white">
+   									<p class="myTextSlides"><?php echo $propiedad_ubicacion['ciudad'];?>, <?php echo $propiedad_ubicacion['provincia'];?>, <?php echo $propiedad_ubicacion['pais'];?></p>
+  									<p class="myTextSlides2" align="center">$<?php echo $propiedad['precio'];?> por noche</p>
+  								</div>
+  							</div>
 		                <?php
 		                }
 		                ?>
@@ -55,6 +66,9 @@ session_start();
 			    <span class="w3-badge demo w3-border w3-transparent w3-hover-white" onclick="currentDiv(4)"></span>
 			    <span class="w3-badge demo w3-border w3-transparent w3-hover-white" onclick="currentDiv(5)"></span>
 			    <span class="w3-badge demo w3-border w3-transparent w3-hover-white" onclick="currentDiv(6)"></span>
+			    <span class="w3-badge demo w3-border w3-transparent w3-hover-white" onclick="currentDiv(7)"></span>
+			    <span class="w3-badge demo w3-border w3-transparent w3-hover-white" onclick="currentDiv(8)"></span>
+			    <span class="w3-badge demo w3-border w3-transparent w3-hover-white" onclick="currentDiv(9)"></span>
 			</div>
     	</div>
 
@@ -71,19 +85,29 @@ session_start();
 			}
 
 			function showDivs(n) {
-			  var i;
-			  var x = document.getElementsByClassName("mySlides");
-			  var dots = document.getElementsByClassName("demo");
-			  if (n > x.length) {slideIndex = 1}
-			  if (n < 1) {slideIndex = x.length}
-			  for (i = 0; i < x.length; i++) {
-			     x[i].style.display = "none";
-			  }
-			  for (i = 0; i < dots.length; i++) {
-			     dots[i].className = dots[i].className.replace(" w3-white", "");
-			  }
-			  x[slideIndex-1].style.display = "block";
-			  dots[slideIndex-1].className += " w3-white";
+				var i;
+				var x = document.getElementsByClassName("mySlides");
+				var y = document.getElementsByClassName("myTextSlides");
+				var z = document.getElementsByClassName("myTextSlides2");
+				var dots = document.getElementsByClassName("demo");
+				if (n > x.length) {
+				  	slideIndex = 1
+				}
+				if (n < 1) {
+				  	slideIndex = x.length
+				}
+				for (i = 0; i < x.length; i++) {
+				    x[i].style.display = "none";
+					y[i].style.display = "none";
+				 	z[i].style.display = "none";
+				}
+				for (i = 0; i < dots.length; i++) {
+				   dots[i].className = dots[i].className.replace(" w3-white", "");
+				}
+				x[slideIndex-1].style.display = "block";
+				y[slideIndex-1].style.display = "block";
+				z[slideIndex-1].style.display = "block";
+				dots[slideIndex-1].className += " w3-white";
 			}
 		</script>
 		<script src="js/jquery.js"></script>

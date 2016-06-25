@@ -1,3 +1,4 @@
+		            
 <!DOCTYPE html>
 <html lang="en">
   	<head>
@@ -29,6 +30,8 @@
 			$tipo_propiedad = mysql_fetch_array($result2);
 			$result4 = mysql_query("SELECT * FROM foto WHERE id_propiedad = '$propiedad[id_propiedad]'");
 			$foto_propiedad = mysql_fetch_array($result4);
+			$result4 = mysql_query("SELECT * FROM usuario WHERE id_usuario = '$propiedad[id_usuario]'");
+			$usuario_propiedad = mysql_fetch_array($result4);
 	    ?>
 	    <div class="container">
     		<h1 class="well"><?php echo $propiedad['nombre'];?> | <?php echo $propiedad_ubicacion['ciudad'];?> </h1>
@@ -51,8 +54,14 @@
 		                }
 		                ?>
 		            </ul>
-		            <a href="#" class="uk-slidenav uk-slidenav-contrast uk-slidenav-previous" data-uk-slideshow-item="previous" style="width:160px;height:560px;"></a>
-		            <a href="#" class="uk-slidenav uk-slidenav-contrast uk-slidenav-next" data-uk-slideshow-item="next" style="width:160px;height:560px; "></a>
+		            <?php
+						if ($usuario_propiedad['rol'] == 2){
+						?>
+				            <a href="#" class="uk-slidenav uk-slidenav-contrast uk-slidenav-previous" data-uk-slideshow-item="previous" style="width:160px;height:560px;"></a>
+				            <a href="#" class="uk-slidenav uk-slidenav-contrast uk-slidenav-next" data-uk-slideshow-item="next" style="width:160px;height:560px; "></a>
+				        <?
+						}
+					?>
 		        </div>
 	    	</div>
     	</div>

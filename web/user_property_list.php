@@ -34,10 +34,10 @@ session_start();
 					<div class="panel panel-default">
 						<table class="table">
 						    <tr>
-						    	<td><strong>ID</strong></td>
-								<td><strong>Nombre</strong></td>
-								<td><strong>Dirección</strong></td>
-								<td><strong>Precio</strong></td>
+						    	<td align="center"><strong>ID</strong></td>
+								<td align="center"><strong>Nombre</strong></td>
+								<td align="center"><strong>Dirección</strong></td>
+								<td align="center"><strong>Precio</strong></td>
 							</tr>
 							<?php
 							$result = mysql_query("SELECT * FROM propiedad WHERE (id_usuario = '$_SESSION[id_usuario]')");
@@ -45,19 +45,19 @@ session_start();
 								$var = $tabla["id_propiedad"];
 							?>
 							<tr>
-								<td> <?php echo $tabla["id_propiedad"];?></td>
-								<td> <?php echo $tabla["nombre"];?></td>
+								<td align="center"> <?php echo $tabla["id_propiedad"];?></td>
+								<td align="center"> <?php echo $tabla["nombre"];?></td>
 								<?php
 								$result2 = mysql_query("SELECT * FROM propiedad WHERE id_propiedad = '$tabla[id_propiedad]'");
 								$propiedad = mysql_fetch_array($result2);
 								$result3 = mysql_query("SELECT * FROM ubicacion WHERE id_ubicacion = '$propiedad[id_ubicacion]'");
 								$propiedad_ubicacion = mysql_fetch_array($result3);
 								?>
-								<td> <?php echo $propiedad_ubicacion['calle'];?>, <?php echo $propiedad_ubicacion['numero'];?>, <?php echo $propiedad_ubicacion['piso'];?>, <?php echo $propiedad_ubicacion['departamento'];?> </td>
-								<td> <?php echo $tabla["precio"];?></td>
-								<td> <button type="submit" name="propiedad" id="propiedad" value="<?php echo htmlspecialchars($var);?>" class="btn btn-info btn-group-xs">Ver propiedad</button> </td>
-								<td> <button type="submit" name="reservas" id="reservas" value="<?php echo htmlspecialchars($var);?>" class="btn btn-success btn-group-xs">Reservas</button> </td>
-								<td> <button type="submit" name="preguntas" id="preguntas" value="<?php echo htmlspecialchars($var);?>" class="btn btn-warning btn-group-xs">Preguntas</button> </td>	
+								<td align="center"> <?php echo $propiedad_ubicacion['calle'];?>, <?php echo $propiedad_ubicacion['numero'];?>, <?php echo $propiedad_ubicacion['piso'];?>, <?php echo $propiedad_ubicacion['departamento'];?> </td>
+								<td align="center"> <?php echo $tabla["precio"];?></td>
+								<td align="center" align="center" align="center"> <button type="submit" name="propiedad" id="propiedad" value="<?php echo htmlspecialchars($var);?>" class="btn btn-info btn-group-xs">Ver propiedad</button> </td>
+								<td align="center" align="center"> <button type="submit" name="reservas" id="reservas" value="<?php echo htmlspecialchars($var);?>" class="btn btn-success btn-group-xs">Reservas</button> </td>
+								<td align="center"> <button type="submit" name="preguntas" id="preguntas" value="<?php echo htmlspecialchars($var);?>" class="btn btn-warning btn-group-xs">Preguntas</button> </td>	
 							</tr>
 							<?php
 							}

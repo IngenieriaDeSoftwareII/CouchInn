@@ -51,6 +51,10 @@ session_start();
 					alert("Por favor ingrese la fecha de fin.");
 					return false;
 				}
+				if (fecha1 > fecha2){
+					alert("Por favor ingrese fechas correctas.");
+					return false;
+				}
 			}
 		</script>
   	</head>

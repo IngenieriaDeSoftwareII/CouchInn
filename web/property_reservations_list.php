@@ -32,10 +32,10 @@
 					<div class="panel panel-default">
 						<table class="table">
 						    <tr>
-						    	<td><strong>ID</strong></td>
-								<td><strong>Nombre del Huesped</strong></td>
-								<td><strong>Fecha Inicio</strong></td>
-								<td><strong>Fecha Fin</strong></td>
+						    	<td align="center"><strong>ID</strong></td>
+								<td align="center"><strong>Nombre del Huesped</strong></td>
+								<td align="center"><strong>Fecha Inicio</strong></td>
+								<td align="center"><strong>Fecha Fin</strong></td>
 							</tr>
 							<?php
 							include 'conexion.php';
@@ -45,12 +45,12 @@
 								$usuario = mysql_fetch_array($result2);
 							?>
 							<tr>
-								<td> <?php echo $tabla["id_reserva_propiedad"];?></td>
-								<td> <?php echo $usuario["nombre_usuario"];?></td>
-								<td> <?php echo $tabla["fecha_inicio_reserva"];?></td>
-								<td> <?php echo $tabla["fecha_fin_reserva"];?></td>
-								<td> <button type="submit" name="aceptar" id="aceptar" onclick="return confirm('Esta seguro que desea aceptar esta reserva?')" value="<?php echo htmlspecialchars($tabla["id_reserva_propiedad"]);?>" class="btn btn-success btn-group-xs">Aceptar</button> </td>
-								<td> <button type="submit" name="rechazar" id="rechazar" onclick="return confirm('Esta seguro que desea rechazar esta reserva?')" value="<?php echo htmlspecialchars($tabla["id_reserva_propiedad"]);?>" class="btn btn-danger btn-group-xs">Rechazar</button> </td>
+								<td align="center"> <?php echo $tabla["id_reserva_propiedad"];?></td>
+								<td align="center"> <?php echo $usuario["nombre_usuario"];?></td>
+								<td align="center"> <?php echo $tabla["fecha_inicio_reserva"];?></td>
+								<td align="center"> <?php echo $tabla["fecha_fin_reserva"];?></td>
+								<td align="center"> <button type="submit" name="aceptar" id="aceptar" onclick="return confirm('Esta seguro que desea aceptar esta reserva?')" value="<?php echo htmlspecialchars($tabla["id_reserva_propiedad"]);?>" class="btn btn-success btn-group-xs">Aceptar</button> </td>
+								<td align="center"> <button type="submit" name="rechazar" id="rechazar" onclick="return confirm('Esta seguro que desea rechazar esta reserva?')" value="<?php echo htmlspecialchars($tabla["id_reserva_propiedad"]);?>" class="btn btn-danger btn-group-xs">Rechazar</button> </td>
 							</tr>
 							<?php
 							}

@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   	<head>
@@ -23,45 +27,40 @@
 			}
 			include "conexion.php";
 		?>
-		<div class="container"> <?php
-			$preg = mysql_query("SELECT * FROM pregunta WHERE id_propiedad = '$_POST[preguntas]'");
-			$table = mysql_fetch_array($preg);
-			$query = mysql_query("SELECT * FROM propiedad WHERE id_propiedad = '$table[id_propiedad]'");
-			$nombre = mysql_fetch_array($query);
-			$nombre_prop = mysql_query("SELECT * FROM propiedad WHERE id_propiedad = '$_POST[preguntas]'");
-			$nom = mysql_fetch_array($nombre_prop);
-			?>
-	    	<h1 class="well">Listado de preguntas de la propiedad "<?php echo $nom["nombre"];?>"</h1>
+		<div class="container"> 
+	    	<h1 class="well">Listado de Mis Preguntas</h1>
 				<form name="form1" method="post" action="property_questions_list_check.php">
 					<div class="panel panel-default">
 						<table class="table">
 						    <tr>
-								<td align="center"><strong>Nombre de Usuario</strong></td>
+								<td align="center"><strong>ID Pregunta</strong></td>
 								<td align="center"><strong>Pregunta</strong></td>
+								<td align="center"><strong>Nombre Propiedad</strong></td>
+								<td align="center"><strong>Nombre de Usuario</strong></td>
+								<td align="center"><strong>Respondida</strong></td>
 							</tr>
 							<?php
-							$preguntas = mysql_query("SELECT * FROM pregunta WHERE id_propiedad = '$_POST[preguntas]'");
+							$id_usuario = $_SESSION['id_usuario'];
+							$preguntas = mysql_query("SELECT * FROM pregunta WHERE id_usuario = $id_usuario");
 							while ($tabla = mysql_fetch_array($preguntas)){
 								$result2 = mysql_query("SELECT * FROM propiedad WHERE id_propiedad = '$tabla[id_propiedad]'");
 								$nombre_propiedad = mysql_fetch_array($result2);
-								$result3 = mysql_query("SELECT * FROM usuario WHERE id_usuario = '$tabla[id_usuario]'");
+								$result3 = mysql_query("SELECT * FROM usuario WHERE id_usuario = '$nombre_propiedad[id_usuario]'");
 								$nombre_usuario = mysql_fetch_array($result3);
 								$var2 = $tabla["id_pregunta"];
 							?>
 							<tr>
-								<td align="center"> <?php echo $nombre_usuario["nombre_usuario"];?></td>
+								<td align="center"> <?php echo $tabla["id_pregunta"];?></td>
 								<td align="center"> <?php echo $tabla["descripcion"];?></td>
+								<td align="center"> <?php echo $nombre_propiedad["nombre"];?></td>
+								<td align="center"> <?php echo $nombre_usuario["nombre_usuario"];?></td>
 								<?php
 								if (($tabla['respuesta']) != (NULL)) { ?>
  									<td align="center"> <button type="submit" class="btn btn-success btn-group-xs" name="ver_respuesta" id="ver_respuesta" value="<?php echo htmlspecialchars($var2);?>" class="btn btn-danger btn-group-xs">Ver Respuesta</button>
 									</td>
  								<?php
  								}
-								else{ 
-								?>
-								<td align="center"> <button type="submit" class="btn btn-warning btn-group-xs" name="respond" id="respond" value="<?php echo htmlspecialchars($var2);?>" class="btn btn-danger btn-group-xs">Responder</button>
-								</td>
-								<?php
+								else{ echo '<td><b><center>No</b></td>';
 								}
 								?>
 								</tr>
@@ -72,7 +71,7 @@
 					</div>
 				</form>
 			<div align="center">
-				<a href="user_property_list.php"><button type="button" class="btn btn-primary navbar-btn">Volver a Mis Propiedades</button></a>
+				<a href="user_property_list.php"><button type="button" class="btn btn-primary navbar-btn">Ir a Mis Propiedades</button></a>
 			</div>	
 		</div>
 

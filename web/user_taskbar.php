@@ -19,12 +19,7 @@
 		  				<li class="navbar-left"><a href="index.php"><img src="images/Logo.png" width="150" height="30"></a></li>
 			      		<li><a href="about_us.php">Acerca de...</a></li>
 			        	<li><a href="property_publish.php">Publicar propiedad</a></li>
-			      		<form class="navbar-form navbar-left" role="search">
-			       		<div class="form-group">
-			          		<input type="text" class="form-control" placeholder="¿A dónde vas?">
-			        	</div>
-			        	<button type="submit" class="btn btn-default">Buscar</button>
-			      		</form>
+			        	<li><a href="property_search.php">Buscar propiedad</a></li>
 			      	</ul>
 			    	<ul class="nav navbar-nav navbar-right">
 						<div class="btn-group">
@@ -35,7 +30,7 @@
 			            		<li><a href="user_data_list.php">Mis datos personales</a></li>
 			            		<li><a href="user_property_list.php">Mis propiedades</a></li>
 			            		<li><a href="user_reservations_list.php">Mis reservas</a></li>
-			            		<li><a href="#">Mis preguntas</a></li>
+			            		<li><a href="user_questions_list.php">Mis preguntas</a></li>
 			            		<?php
 			    				if ($_SESSION['rol'] == 1){
 								echo '<li role="separator" class="divider"></li>

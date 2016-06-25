@@ -35,7 +35,7 @@
                     <textarea readonly type="long-text" maxlength="800" name="descripcion" id="descripcion" rows="4" class="form-control"> <?php echo $table["respuesta"];?> </textarea>
                 </div>
                 <div align="center">
-                    <a href="user_property_list.php"><button type="button" class="btn btn-success navbar-btn">Volver al listados de Mis Propiedades</button></a>
+                    <button type="reset" class="btn btn-primary navbar-btn" onClick="window.location.href='javascript:history.back(-1);'">Volver</button>
                 </div>
         </div>
 

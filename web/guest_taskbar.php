@@ -19,12 +19,7 @@
 		  				<li class="navbar-left"><a href="index.php"><img src="images/Logo.png" width="150" height="30"></a></li>
 			      		<li><a href="about_us.php">Acerca de...</a></li>
 			        	<li><a href="property_publish_without_login.php">Publicar propiedad</a></li>
-			      		<form class="navbar-form navbar-left" role="search">
-			       		<div class="form-group">
-			          		<input type="text" class="form-control" placeholder="Buscar propiedad">
-			        	</div>
-			        	<button type="submit" class="btn btn-default">Buscar</button>
-			      		</form>
+			        	<li><a href="property_search.php">Buscar propiedad</a></li>
 			      	</ul>
 			    	<ul class="nav navbar-nav navbar-right">
 						<button type="button" class="btn btn-primary navbar-btn" onClick="window.location.href='register.php'">Registrarme</button>

@@ -79,7 +79,7 @@ session_start();
   	<body>
     	<?php
 			if (!isset ($_SESSION['rol'])){
-		      header("Location: index.php");
+		      header("Location: login.php");
 		    }
 		    else{
 				include 'taskbar_manager.php';

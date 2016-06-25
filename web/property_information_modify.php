@@ -162,11 +162,11 @@
 								</div>		
 							</div>					
 							<div class="row">
-								<div class="col-sm-8 form-group">
+								<div class="col-sm-6 form-group">
 									<dl class="form-group">
 			            				<dt><label>Tipo de Propiedad</label></dt>
 			            				<dd>
-			              					<select class="form-select select" name='tipo_propiedad'>
+			              					<select class="form-control" name='tipo_propiedad'>
 			              						<option value=""></option>
 			              						<?php
 			              						include 'conexion.php';
@@ -184,19 +184,19 @@
 								</div>
 							</div>
 							<div class="row">
-								<div class="col-sm-2 form-group">
+								<div class="col-sm-3 form-group">
 									<label>Precio</label>
 									<input name="precio" id="precio" maxlength="10" onkeypress="return justNumbers(event);" type="text" value="<?php echo $propiedad["precio"];?>" placeholder="Ingresa el precio aqui.." class="form-control">	
 								</div>
-								<div class="col-sm-1 form-group">
+								<div class="col-sm-2 form-group">
 									<label>Capacidad</label>
 									<input name="capacidad" id="capacidad" maxlength="2" onkeypress="return justNumbers(event);" value="<?php echo $propiedad["capacidad"];?>" type="number" min=0 max=20 class="form-control">	
 								</div>	
-								<div class="col-sm-1 form-group">
+								<div class="col-sm-2 form-group">
 									<label>Habitaciones</label>
 									<input name="habitaciones" id="habitaciones" maxlength="2" onkeypress="return justNumbers(event);" value="<?php echo $propiedad["numero_habitaciones"];?>" type="number" min=0 max=10 class="form-control">	
 								</div>	
-								<div class="col-sm-1 form-group">
+								<div class="col-sm-2 form-group">
 									<label>Baños</label>
 									<input name="banos" id="banos" maxlength="2" onkeypress="return justNumbers(event);" value="<?php echo $propiedad["numero_banos"];?>" type="number" min=0 max=10 class="form-control">	
 								</div>			

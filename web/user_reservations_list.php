@@ -32,16 +32,14 @@ session_start();
 
 		<div class="container">
 	    	<h1 class="well">Mis Reservas</h1>
-				<form name="form1" method="post" action="reservation_cancel_check.php">
 					<div class="panel panel-default">
 						<table class="table">
 						    <tr>
-						    	<td><strong>ID</strong></td>
-								<td><strong>Nombre Propiedad</strong></td>
-								<td><strong>Fecha Inicio</strong></td>
-								<td><strong>Fecha Fin</strong></td>
-								<td><strong>Estado</strong></td>
-								<td><strong>Cancelacion</strong></td>
+						    	<td align="center"><strong>ID</strong></td>
+								<td align="center"><strong>Nombre Propiedad</strong></td>
+								<td align="center"><strong>Fecha Inicio</strong></td>
+								<td align="center"><strong>Fecha Fin</strong></td>
+								<td align="center"><strong>Estado</strong></td>
 							</tr>
 							<?php
 							include 'conexion.php';
@@ -51,14 +49,43 @@ session_start();
 								$propiedad = mysql_fetch_array($result2);
 							?>
 							<tr>
-								<td> <?php echo $tabla["id_reserva_propiedad"];?></td>
-								<td> <?php echo $propiedad["nombre"];?></td>
-								<td> <?php echo $tabla["fecha_inicio_reserva"];?></td>
-								<td> <?php echo $tabla["fecha_fin_reserva"];?></td>
-								<td> <?php echo $tabla["estado"];?></td>
+								<td align="center"> <?php echo $tabla["id_reserva_propiedad"];?></td>
+								<td align="center"> <?php echo $propiedad["nombre"];?></td>
+								<td align="center"> <?php echo $tabla["fecha_inicio_reserva"];?></td>
+								<td align="center"> <?php echo $tabla["fecha_fin_reserva"];?></td>
+								<?php 
+									if ($tabla["estado"] == 0){
+									?>
+									<td align="center"> Esperando confirmacion </td>
+									<?php
+									}
+									elseif ($tabla["estado"] == 1){
+									?>
+									<td align="center"> Aceptada </td>
+									<?php
+									}
+									elseif ($tabla["estado"] == 2){
+									?>
+									<td align="center"> Finalizada </td>
+									<?php
+									}
+									else{
+									?>
+									<td align="center"> Cancelada </td>
+									<?php
+									}
+								?>
+								<td><a href="property_view.php?id_propiedad=<?php echo $propiedad["id_propiedad"];?>" align="center"><button name="ver_propiedad" class="btn btn-primary btn-group-xs">Ver Propiedad</button></a></td>
+
 								<?php
-								if ($tabla["estado"] < 2){ ?>									
-										<td> <button type="submit" name="cancelar" id="cancelar" onclick="return confirm('Esta seguro que desea cancelar su reserva de forma permanente?')" value="<?php echo htmlspecialchars($tabla["id_reserva_propiedad"]);?>" class="btn btn-danger btn-group-xs">Cancelar</button> </td>
+								if ($tabla["estado"] < 2){
+								?>									
+									<td><a href="reservation_cancel_check.php?id_reserva_propiedad=<?php echo htmlspecialchars($tabla["id_reserva_propiedad"]);?>" align="center"><button name="cancelar" id="cancelar" onclick="return confirm('Esta seguro que desea cancelar su reserva de forma permanente?')" class="btn btn-danger btn-group-xs">Cancelar</button></a></td>
+								<?php
+								}
+								else{
+								?>
+									<td align="center"> <button type="submit" style="display: none;"></button></td>
 								<?php
 								}
 								?>
@@ -68,7 +95,6 @@ session_start();
 							?>
 						</table>
 					</div>
-				</form>
 		</div>
 
     	<script src="js/jquery.js"></script>

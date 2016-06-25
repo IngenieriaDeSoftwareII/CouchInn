@@ -21,15 +21,19 @@ if ($count > 0){
 		if($count == 0){
 			$query = "INSERT INTO reserva_propiedad (estado, fecha_inicio_reserva, fecha_fin_reserva, id_huesped, id_propiedad) VALUES (0, '$desde', '$hasta', '$_SESSION[id_usuario]', '$_POST[prop]')";
  			if (!mysql_query($query, $conexion)){
- 				die('Error: ' . mysql_error());
-				echo "Error al solicitar la reserva." . "<br />";
+ 				mysql_close($conexion);
+			 	$mensaje = "Error al solicitar la reserva.";
+				echo "<script>";
+				echo "alert('$mensaje');";  
+				echo "window.location.href='javascript:history.back(-2);'";
+				echo "</script>";
  			}
  			else{
 	 			mysql_close($conexion);
 	 			$mensaje = "La solicitud de reserva fue enviada correctamente.";
 				echo "<script>";
 				echo "alert('$mensaje');";  
-				echo "window.location.href='javascript:history.back(-2);'";
+				echo "window.location.href='user_reservations_list.php'";
 				echo "</script>";
 	 			//header("Location: property_kind_list.php");  
 			}
@@ -55,15 +59,19 @@ if ($count > 0){
 else{
 	$query = "INSERT INTO reserva_propiedad (estado, fecha_inicio_reserva, fecha_fin_reserva, id_huesped, id_propiedad) VALUES (0, '$desde', '$hasta', '$_SESSION[id_usuario]', '$_POST[prop]')";
  	if (!mysql_query($query, $conexion)){
- 		die('Error: ' . mysql_error());
-		echo "Error al solicitar la reserva." . "<br />";
+ 		mysql_close($conexion);
+	 	$mensaje = "Error al solicitar la reserva.";
+		echo "<script>";
+		echo "alert('$mensaje');";  
+		echo "window.location.href='javascript:history.back(-2);'";
+		echo "</script>";
  	}
 	else{
 	 	mysql_close($conexion);
 	 	$mensaje = "La solicitud de reserva fue enviada correctamente.";
 		echo "<script>";
 		echo "alert('$mensaje');";  
-		echo "window.location = 'index.php';";
+		echo "window.location.href='user_reservations_list.php'"; 
 		echo "</script>";
 	 	//header("Location: property_kind_list.php");  
 	}
