@@ -36,8 +36,8 @@ session_start();
                 <div class="panel panel-default">
                     <table class="table">
                         <tr>
-                            <td><strong>Nombre de Usuario</strong></td>
-                            <td><strong>Fecha de Registro</strong></td>
+                            <td align="center" style="vertical-align:middle;"><strong>Nombre de Usuario</strong></td>
+                            <td align="center" style="vertical-align:middle;"><strong>Fecha de Registro</strong></td>
                         </tr>
                         <?php
                         $desde = $_POST['fecha1'];
@@ -51,8 +51,8 @@ session_start();
                             $var = $tabla["id_usuario"];
                             ?>
                             <tr>
-                                <td> <?php echo $tabla["nombre_usuario"];?></td>
-                                <td> <?php echo $tabla["fecha_registro"];?></td>
+                                <td align="center" style="vertical-align:middle;"> <?php echo $tabla["nombre_usuario"];?></td>
+                                <td align="center" style="vertical-align:middle;"> <?php echo $tabla["fecha_registro"];?></td>
                             </tr>
                         <?php
                         }

@@ -159,7 +159,7 @@ session_start();
 					<div class="panel panel-default">
 						<table class="table">
 						    <tr>
-						    	<td align="center"><strong>ID</strong></td>
+						    	<td></td>
 								<td align="center"><strong>Nombre</strong></td>
 								<td align="center"><strong>Dirección</strong></td>
 								<td align="center"><strong>Precio</strong></td>
@@ -169,18 +169,20 @@ session_start();
 								<?php
 								while ($tabla = mysql_fetch_array($result)){
 									$var = $tabla["id_propiedad"];
+									$query_foto = mysql_query("SELECT * FROM foto WHERE id_propiedad = '$tabla[id_propiedad]'");
+									$foto = mysql_fetch_array($query_foto);
 								?>
-									<td align="center"> <?php echo $tabla["id_propiedad"];?></td>
-									<td align="center"> <?php echo $tabla["nombre"];?></td>
+									<td align="center"><a href="property_view.php?id_propiedad=<?php echo htmlspecialchars($tabla["id_propiedad"]);?>"><img src="<?php echo $foto['url'];?>" alt="Imagen" height="100" width="180" ></a></td>
+									<td align="center" style="vertical-align:middle;"> <?php echo $tabla["nombre"];?></td>
 									<?php
 									$result2 = mysql_query("SELECT * FROM propiedad WHERE id_propiedad = '$tabla[id_propiedad]'");
 									$propiedad = mysql_fetch_array($result2);
 									$result3 = mysql_query("SELECT * FROM ubicacion WHERE id_ubicacion = '$propiedad[id_ubicacion]'");
 									$propiedad_ubicacion = mysql_fetch_array($result3);
 									?>
-									<td align="center"> <?php echo $propiedad_ubicacion['calle'];?>, <?php echo $propiedad_ubicacion['numero'];?>, <?php echo $propiedad_ubicacion['piso'];?>, <?php echo $propiedad_ubicacion['departamento'];?> </td>
-									<td align="center"> <?php echo $tabla["precio"];?></td>
-									<td align="center"><a href="property_view.php?id_propiedad=<?php echo htmlspecialchars($tabla["id_propiedad"]);?>"><button class="btn btn-info btn-group-xs">Ver propiedad</button></a></td>
+									<td align="center" style="vertical-align:middle;"> <?php echo $propiedad_ubicacion['calle'];?>, <?php echo $propiedad_ubicacion['numero'];?>, <?php echo $propiedad_ubicacion['piso'];?>, <?php echo $propiedad_ubicacion['departamento'];?> </td>
+									<td align="center" style="vertical-align:middle;"> <?php echo $tabla["precio"];?></td>
+									<td align="center" style="vertical-align:middle;"><a href="property_view.php?id_propiedad=<?php echo htmlspecialchars($tabla["id_propiedad"]);?>"><button class="btn btn-info btn-group-xs">Ver propiedad</button></a></td>
 							</tr>
 							<?php
 							}

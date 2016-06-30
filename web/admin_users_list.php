@@ -52,7 +52,7 @@ session_start();
 					return false;
 				}
 				if (fecha1 > fecha2){
-					alert("Por favor ingrese fechas correctas.");
+					alert("La fecha de inicio no puede ser posterior a la fecha de fin. Por favor ingrese fechas validas.");
 					return false;
 				}
 			}
@@ -100,14 +100,14 @@ session_start();
 					<div class="panel panel-default">
 						<table class="table">
 						    <tr>
-						    	<td><strong>Nombre_Usuario</strong></td>
-								<td><strong>Contrasena</strong></td>
-								<td><strong>Nombre</strong></td>
-								<td><strong>Apellido</strong></td>
-								<td><strong>DNI</strong></td>
-								<td><strong>Telefono</strong></td>
-								<td><strong>Email</strong></td>
-								<td><strong>Fecha Registro</strong></td>
+						    	<td align="center" style="vertical-align:middle;"><strong>Nombre_Usuario</strong></td>
+								<td align="center" style="vertical-align:middle;"><strong>Contrasena</strong></td>
+								<td align="center" style="vertical-align:middle;"><strong>Nombre</strong></td>
+								<td align="center" style="vertical-align:middle;"><strong>Apellido</strong></td>
+								<td align="center" style="vertical-align:middle;"><strong>DNI</strong></td>
+								<td align="center" style="vertical-align:middle;"><strong>Telefono</strong></td>
+								<td align="center" style="vertical-align:middle;"><strong>Email</strong></td>
+								<td align="center" style="vertical-align:middle;"><strong>Fecha Registro</strong></td>
 							</tr>
 							<?php
 							$result = mysql_query("SELECT * FROM usuario");
@@ -115,28 +115,28 @@ session_start();
 								$var = $tabla["id_usuario"];
 								?>
 								<tr>
-									<td> <?php echo $tabla["nombre_usuario"];?></td>
-									<td> <?php echo $tabla["contrasena"];?></td>
-									<td> <?php echo $tabla["nombre"];?></td>
-									<td> <?php echo $tabla["apellido"];?></td>
-									<td> <?php echo $tabla["dni"];?></td>
-									<td> <?php echo $tabla["telefono"];?></td>
-									<td> <?php echo $tabla["email"];?></td>
-									<td> <?php echo $tabla["fecha_registro"];?></td>
+									<td align="center" style="vertical-align:middle;"> <?php echo $tabla["nombre_usuario"];?></td>
+									<td align="center" style="vertical-align:middle;"> <?php echo $tabla["contrasena"];?></td>
+									<td align="center" style="vertical-align:middle;"> <?php echo $tabla["nombre"];?></td>
+									<td align="center" style="vertical-align:middle;"> <?php echo $tabla["apellido"];?></td>
+									<td align="center" style="vertical-align:middle;"> <?php echo $tabla["dni"];?></td>
+									<td align="center" style="vertical-align:middle;"> <?php echo $tabla["telefono"];?></td>
+									<td align="center" style="vertical-align:middle;"> <?php echo $tabla["email"];?></td>
+									<td align="center" style="vertical-align:middle;"> <?php echo $tabla["fecha_registro"];?></td>
 									<?php
 										if ($tabla['rol'] == 1){
 											?>
-											<td> <center> <button type="submit" name="premium" id="premium" value="<?php echo htmlspecialchars($var);?>" class="btn btn-warning btn-group-xs">Hacer Premium</button> </td>
+											<td style="vertical-align:middle;"> <center> <button type="submit" name="premium" id="premium" value="<?php echo htmlspecialchars($var);?>" class="btn btn-warning btn-group-xs">Hacer Premium</button> </td>
 										<?php
 										}
 										else{
 											if ($tabla['rol'] == 2){
 												?>
-												<td> <center> <button type="submit" name="regular" id="regular" value="<?php echo htmlspecialchars($var);?>" class="btn btn-danger btn-group-xs">Quitar Premium</button> </td>
+												<td style="vertical-align:middle;"> <center> <button type="submit" name="regular" id="regular" value="<?php echo htmlspecialchars($var);?>" class="btn btn-danger btn-group-xs">Quitar Premium</button> </td>
 											<?php
 											}
 											else{
-												echo '<td><b><center>Admin</b></td>';
+												echo '<td style="vertical-align:middle;"><b><center>Admin</b></td>';
 											}
 										}
 									?>

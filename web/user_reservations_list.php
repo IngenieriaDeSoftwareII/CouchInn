@@ -35,7 +35,6 @@ session_start();
 					<div class="panel panel-default">
 						<table class="table">
 						    <tr>
-						    	<td align="center"><strong>ID</strong></td>
 								<td align="center"><strong>Nombre Propiedad</strong></td>
 								<td align="center"><strong>Fecha Inicio</strong></td>
 								<td align="center"><strong>Fecha Fin</strong></td>
@@ -49,7 +48,6 @@ session_start();
 								$propiedad = mysql_fetch_array($result2);
 							?>
 							<tr>
-								<td align="center"> <?php echo $tabla["id_reserva_propiedad"];?></td>
 								<td align="center"> <?php echo $propiedad["nombre"];?></td>
 								<td align="center"> <?php echo $tabla["fecha_inicio_reserva"];?></td>
 								<td align="center"> <?php echo $tabla["fecha_fin_reserva"];?></td>

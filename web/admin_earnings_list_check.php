@@ -36,13 +36,11 @@ session_start();
                 <div class="panel panel-default">
                     <table class="table">
                         <tr>
-                            <td><strong>ID Reserva</strong></td>
-                            <td><strong>Nombre de Usuario</strong></td>
-                            <td><strong>ID Propiedad</strong></td>
-                            <td><strong>Nombre Propiedad</strong></td>
-                            <td><strong>Cantidad Dias</strong></td>
-                            <td><strong>Monto por Dia</strong></td>
-                            <td><strong>Monto Total</strong></td>
+                            <td align="center"><strong>Nombre de Usuario</strong></td>
+                            <td align="center"><strong>Nombre Propiedad</strong></td>
+                            <td align="center"><strong>Cantidad Dias</strong></td>
+                            <td align="center"><strong>Monto por Dia</strong></td>
+                            <td align="center"><strong>Monto Total</strong></td>
                         </tr>
                         <?php
                         $totales = 0;
@@ -65,13 +63,11 @@ session_start();
                             $total = $total * $cant;
                             ?>
                             <tr>
-                                <td> <?php echo $tabla["id_reserva_propiedad"];?></td>
-                                <td> <?php echo $usuario["nombre_usuario"];?></td>
-                                <td> <?php echo $tabla["id_propiedad"];?></td>
-                                <td> <?php echo $propiedad["nombre"];?></td>
-                                <td> <?php echo $cant;?></td>
-                                <td> <?php echo $propiedad["precio"];?></td>
-                                <td> <?php echo $total;?></td>
+                                <td align="center"> <?php echo $usuario["nombre_usuario"];?></td>
+                                <td align="center"> <?php echo $propiedad["nombre"];?></td>
+                                <td align="center"> <?php echo $cant;?></td>
+                                <td align="center"> <?php echo $propiedad["precio"];?></td>
+                                <td align="center"> <?php echo $total;?></td>
                             </tr>
                         <?php
                         $totales = $totales + $total;

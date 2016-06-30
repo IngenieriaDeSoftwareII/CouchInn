@@ -34,7 +34,6 @@ session_start();
 					<div class="panel panel-default">
 						<table class="table">
 						    <tr>
-						    	<td align="center"><strong>ID</strong></td>
 								<td align="center"><strong>Nombre</strong></td>
 								<td align="center"><strong>Dirección</strong></td>
 								<td align="center"><strong>Precio</strong></td>
@@ -45,7 +44,6 @@ session_start();
 								$var = $tabla["id_propiedad"];
 							?>
 							<tr>
-								<td align="center"> <?php echo $tabla["id_propiedad"];?></td>
 								<td align="center"> <?php echo $tabla["nombre"];?></td>
 								<?php
 								$result2 = mysql_query("SELECT * FROM propiedad WHERE id_propiedad = '$tabla[id_propiedad]'");

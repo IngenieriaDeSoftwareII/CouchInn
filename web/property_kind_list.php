@@ -36,9 +36,8 @@ session_start();
 					<div class="panel panel-default">
 						<table class="table">
 						    <tr>
-						    	<td><strong>ID</strong></td>
-								<td><strong>Nombre</strong></td>
-								<td><strong>Descripcion</strong></td>
+								<td align="center" style="vertical-align:middle;"><strong>Nombre</strong></td>
+								<td align="center" style="vertical-align:middle;"><strong>Descripcion</strong></td>
 							</tr>
 							<?php
 							$result = mysql_query("SELECT * FROM tipo_propiedad");
@@ -46,11 +45,10 @@ session_start();
 								$var = $tabla["id_tipo_propiedad"];
 							?>
 							<tr>
-								<td> <?php echo $tabla["id_tipo_propiedad"];?></td>
-								<td> <?php echo $tabla["nombre"];?></td>
-								<td> <?php echo $tabla["descripcion"];?></td>
-								<td> <button type="submit" name="modificar" id="modificar" value="<?php echo htmlspecialchars($var);?>" class="btn btn-warning btn-group-xs">Modificar</button> </td>
-								<td> <button type="submit" name="eliminar" id="eliminar" onclick="return confirm('Esta seguro que desea eliminar el tipo de propiedad de forma permanente?')" value="<?php echo htmlspecialchars($var);?>" class="btn btn-danger btn-group-xs">Eliminar</button> </td>
+								<td align="center" style="vertical-align:middle;"> <?php echo $tabla["nombre"];?></td>
+								<td align="center" style="vertical-align:middle;"> <?php echo $tabla["descripcion"];?></td>
+								<td align="center" style="vertical-align:middle;"> <button type="submit" name="modificar" id="modificar" value="<?php echo htmlspecialchars($var);?>" class="btn btn-warning btn-group-xs">Modificar</button> </td>
+								<td align="center" style="vertical-align:middle;"> <button type="submit" name="eliminar" id="eliminar" onclick="return confirm('Esta seguro que desea eliminar el tipo de propiedad de forma permanente?')" value="<?php echo htmlspecialchars($var);?>" class="btn btn-danger btn-group-xs">Eliminar</button> </td>
 							</tr>
 							<?php
 							}

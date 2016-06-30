@@ -66,7 +66,7 @@ session_start();
 					
 		<div class="container">
 			<div class="col-lg-12 well">
-				<form name="form1" method="post" action="property_reservation.php">
+				<form name="form1" method="post" action="property_reservation.php?id_propiedad=<?php echo $propiedad['id_propiedad'];?>">
 					<div class="row">
 						<div class="col-sm-8 form-group">
 							<label>Ubicacion</label>

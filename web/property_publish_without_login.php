@@ -16,12 +16,8 @@ session_start();
 	</head>
 	<body>
 		<?php
-			if (!isset ($_SESSION['rol'])){
-		      header("Location: index.php");
-		    }
-		    else{
-				include 'taskbar_manager.php';
-			}		?>
+			include 'taskbar_manager.php';
+		?>
 
 		<div class="container">
 	    	<h1 class="well">Bienvenido a CouchInn</h1>
@@ -40,11 +36,7 @@ session_start();
 	</div>
 
 	<br></br>
-	<footer>
-    <ul class="site-footer-links">
-      	<li>&copy; 2016 <span title="0.02827s from github-fe150-cp1-prd.iad.github.net">Couch Inn</span>, Inc.</li>
-    </ul>
-	</footer>
+
 
  
     <!-- Librería jQuery requerida por los plugins de JavaScript -->

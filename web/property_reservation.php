@@ -69,7 +69,7 @@ session_start();
 					alert("Por favor ingrese el codigo de seguridad.");
 					return false;
 				}
-				if (fecha1 >= fecha2){
+				if (fecha1 > fecha2){
 					alert("La fecha de llegada no puede ser posterior a la de partida");
 					return false;
 				}
@@ -86,7 +86,7 @@ session_start();
 			}		
 			include 'conexion.php';
 			//echo $_POST['prop'];
-			$query = mysql_query("SELECT * FROM propiedad WHERE id_propiedad = '$_POST[prop]'");
+			$query = mysql_query("SELECT * FROM propiedad WHERE id_propiedad = '$_GET[id_propiedad]'");
 	    	$result = mysql_fetch_array($query);
 		?>
 
@@ -131,7 +131,7 @@ session_start();
 						</div>
 						<div align="center">
 							<div>
-								<button type="submit" class="btn btn-default navbar-btn" name="prop" id="prop" value="<?php echo $_POST['prop'];?>">Alquilar</button>
+								<button type="submit" class="btn btn-default navbar-btn" name="prop" id="prop" value="<?php echo $_GET['id_propiedad'];?>">Alquilar</button>
 							</div>
 						</div>
 					</form>	

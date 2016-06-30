@@ -33,7 +33,6 @@ session_start();
 					<div class="panel panel-default">
 						<table class="table">
 						    <tr>
-								<td align="center"><strong>ID Pregunta</strong></td>
 								<td align="center"><strong>Pregunta</strong></td>
 								<td align="center"><strong>Nombre Propiedad</strong></td>
 								<td align="center"><strong>Nombre de Usuario</strong></td>
@@ -50,7 +49,6 @@ session_start();
 								$var2 = $tabla["id_pregunta"];
 							?>
 							<tr>
-								<td align="center"> <?php echo $tabla["id_pregunta"];?></td>
 								<td align="center"> <?php echo $tabla["descripcion"];?></td>
 								<td align="center"> <?php echo $nombre_propiedad["nombre"];?></td>
 								<td align="center"> <?php echo $nombre_usuario["nombre_usuario"];?></td>
