@@ -74,7 +74,6 @@ session_start();
 									}
 								?>
 								<td><a href="property_view.php?id_propiedad=<?php echo $propiedad["id_propiedad"];?>" align="center"><button name="ver_propiedad" class="btn btn-primary btn-group-xs">Ver Propiedad</button></a></td>
-
 								<?php
 								if ($tabla["estado"] < 2){
 								?>									

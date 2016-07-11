@@ -36,58 +36,69 @@
 	    <div class="container">
     		<h1 class="well"><?php echo $propiedad['nombre'];?> | <?php echo $propiedad_ubicacion['ciudad'];?> </h1>
 		</div>
-
-
-		<div class="container">
-	       	<div data-uk-slideshow="{kenburns:false}">
-		        <div class="uk-slidenav-position" data-uk-slideshow>
-		            <ul class="uk-slideshow">
-		            	<?php
-		            	include 'conexion.php';
-		            	$result = mysql_query("SELECT * FROM foto WHERE id_propiedad = '$propiedad[id_propiedad]'");
-						while ($foto = mysql_fetch_array($result)){
-						?>
-    						<li align='center'>
-    							<img src="<?php echo $foto['url'];?>"  alt="Imagen">
-    						</li>
-		                <?php
-		                }
-		                ?>
-		            </ul>
-		            <?php
-						if ($usuario_propiedad['rol'] == 2){
-						?>
-				            <a href="#" class="uk-slidenav uk-slidenav-contrast uk-slidenav-previous" data-uk-slideshow-item="previous" style="width:160px;height:560px;"></a>
-				            <a href="#" class="uk-slidenav uk-slidenav-contrast uk-slidenav-next" data-uk-slideshow-item="next" style="width:160px;height:560px; "></a>
-				        <?
-						}
-					?>
-		        </div>
-	    	</div>
-    	</div>
-					
 		<div class="container">
 			<div class="col-lg-12 well">
+					<div class="row">
+						<div class="col-sm-9 form-group">
+							<div data-uk-slideshow="{kenburns:false}">
+						        <div class="uk-slidenav-position" data-uk-slideshow>
+						            <ul class="uk-slideshow">
+						            	<?php
+						            	include 'conexion.php';
+						            	$result = mysql_query("SELECT * FROM foto WHERE id_propiedad = '$propiedad[id_propiedad]'");
+										while ($foto = mysql_fetch_array($result)){
+										?>
+				    						<li align='center'>
+				    							<img src="<?php echo $foto['url'];?>"  alt="Imagen">
+				    						</li>
+						                <?php
+						                }
+						                ?>
+						            </ul>
+						            <?php
+										if ($usuario_propiedad['rol'] == 2){
+										?>
+								            <a href="#" class="uk-slidenav uk-slidenav-contrast uk-slidenav-previous" data-uk-slideshow-item="previous" style="width:160px;height:560px;"></a>
+								            <a href="#" class="uk-slidenav uk-slidenav-contrast uk-slidenav-next" data-uk-slideshow-item="next" style="width:160px;height:560px; "></a>
+								        <?
+										}
+									?>
+						        </div>
+					    	</div>
+				    	</div>
+				   		<div class="col-sm-3 form-group">
+				   			<div class="row">
+								<label>Precio</label>
+								<span readonly id="nombre" class="form-control"> $<?php echo $propiedad['precio'];?> </span>
+							</div>
+							<br>
+							<div class="row">
+								<label>Direccion</label>
+								<span readonly id="nombre" class="form-control"> <?php echo $propiedad_ubicacion['calle'];?>, <?php echo $propiedad_ubicacion['numero'];?>, <?php echo $propiedad_ubicacion['piso'];?>, <?php echo $propiedad_ubicacion['departamento'];?> </span>
+							</div>
+							<br>
+							<div class="row">
+								<label>Puntuacion Propiedad</label>
+								<span readonly id="nombre" class="form-control"> </span>
+							</div>
+							<br>
+							<div class="row">
+								<label>Puntuacion Propietario</label>
+								<span readonly id="nombre" class="form-control"> </span>
+							</div>
+						</div>
+					<br>
+
 				<form name="form1" method="post" action="property_modify_or_delete.php">
 					<div class="row">
-						<div class="col-sm-8 form-group">
-							<label>Ubicacion</label>
-							<p readonly id="nombre" class="form-control"> <?php echo $propiedad_ubicacion['ciudad'];?>, <?php echo $propiedad_ubicacion['provincia'];?>, <?php echo $propiedad_ubicacion['pais'];?> </p>
-						</div>
-						<div class="col-sm-3 form-group">
-							<label>Precio</label>
-							<p readonly id="nombre" class="form-control"> <?php echo $propiedad['precio'];?> </p>
-						</div>
-					</div>
-					<div class="row">					
-						<div class="col-sm-6 form-group">
-							<label>Direccion</label>
-							<span readonly id="nombre" class="form-control"> <?php echo $propiedad_ubicacion['calle'];?>, <?php echo $propiedad_ubicacion['numero'];?>, <?php echo $propiedad_ubicacion['piso'];?>, <?php echo $propiedad_ubicacion['departamento'];?> </span>
-						</div>
-						<div class="col-sm-6 form-group">
+						<div class="col-sm-5 form-group">
 							<label>Tipo de Propiedad</label>
 							<span readonly id="nombre" class="form-control"> <?php echo $tipo_propiedad['nombre'];?> </span>
 						</div>	
+						<div class="col-sm-7 form-group">
+							<label>Ubicacion</label>
+							<span readonly id="nombre" class="form-control"> <?php echo $propiedad_ubicacion['ciudad'];?>, <?php echo $propiedad_ubicacion['provincia'];?>, <?php echo $propiedad_ubicacion['pais'];?> </span>
+						</div>
 					</div>
 					<div class="row">
 						<div class="col-sm-2 form-group">
