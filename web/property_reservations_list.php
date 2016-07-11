@@ -15,7 +15,16 @@
 		         
 		        return /\d/.test(String.fromCharCode(keynum));
 	        }  
-	    </script>          
+	    </script>    
+	    <script language="Javascript"> 
+		    function validation(){
+				var puntaje = document.getElementById("puntaje").value;
+				if (puntaje == ''){
+					alert("Por favor ingrese el puntaje del huesped.");
+					return false;
+				}
+			}
+		</script>
   	</head>
   	<body>
     	<?php
@@ -51,13 +60,18 @@
 							include 'conexion.php';
 							$result = mysql_query("SELECT * FROM reserva_propiedad WHERE id_propiedad = $_POST[reservas]");
 							while ($tabla = mysql_fetch_array($result)){
+								$query2 = mysql_query("SELECT AVG(puntaje) AS promedio FROM puntaje_huesped WHERE id_huesped = $tabla[id_huesped]");
+								$puntaje = mysql_fetch_array($query2);	
 								$result2 = mysql_query("SELECT * FROM usuario WHERE id_usuario = $tabla[id_huesped]");
 								$usuario = mysql_fetch_array($result2);
 								$id_reserva = $tabla["id_reserva_propiedad"];
+								$query = mysql_query("SELECT * FROM puntaje_huesped WHERE id_reserva = $id_reserva");
+								$mi_puntaje = mysql_fetch_array($query);
+								$count = mysql_num_rows($query);							
 							?>
 							<tr>
 								<td align="center"> <?php echo $usuario["nombre_usuario"];?></td>
-								<td align="center"> Puntaje </td>
+								<td align="center"> <?php echo $puntaje['promedio']; ?> </td>
 								<td align="center"> <?php echo $tabla["fecha_inicio_reserva"];?></td>
 								<td align="center"> <?php echo $tabla["fecha_fin_reserva"];?></td>
 								<?php 
@@ -89,11 +103,12 @@
 									<?php
 									}
 									elseif ($tabla["estado"] == 2){
+										if ($count == 0){
 									?>
-										<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+											<div class="modal fade" id="myModal<?php echo htmlspecialchars($id_reserva);?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 												<div class="modal-dialog" role="document">
 											    	<div class="modal-content">
-											      		<form name="puntuacion" action="puntuation.php" method="POST">
+											      		<form name="puntuacion" action="puntuation.php" method="POST" onsubmit="return validation()" enctype="multipart/form-data">
 												      		<div class="modal-header">
 												        		<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 												          			<span aria-hidden="true">&times;</span>
@@ -101,10 +116,9 @@
 												        		<h4 align="center" class="modal-title" style="font-size:200%;" id="myModalLabel">Puntuar Usuario</h4>
 												      		</div>
 												      		<div class="modal-body">
-												      			<?php echo htmlspecialchars($id_reserva);?>
 												        		<div align="center"><span class="glyphicon glyphicon-user" style="font-size:200%;"></span><span style="font-size:120%;"> <?php echo $usuario["nombre_usuario"];?></span></div>
 												        		<br>
-												        		<div align="center"><input name="puntaje" onkeypress="return justNumbers(event);" type="number" min=0 max=5 placeholder="Puntaje" class="form-control" style="width: 100px; text-align: center;" required="required"></div>
+												        		<div align="center"><input name="puntaje" id="puntaje" onkeypress="return justNumbers(event);" type="number" min=0 max=5 placeholder="Puntaje" class="form-control" style="width: 100px; text-align: center;" required="required"></div>
 												      		</div>
 												      		<div class="modal-footer">
 												        		<button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
@@ -114,8 +128,14 @@
 											    	</div>
 											 	</div>
 											</div>
-										<td align="center"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Puntuar Usuario</button>
+										<td align="center"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal<?php echo htmlspecialchars($id_reserva);?>">Puntuar Usuario</button>
 									<?php
+										}
+										else{
+									?>
+											<td align="center"> Tu puntuacion: <?php echo $mi_puntaje['puntaje']; ?> </td>
+									<?
+										}
 									}
 									else{
 									?>									
