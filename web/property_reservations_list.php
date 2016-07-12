@@ -134,7 +134,7 @@
 										else{
 									?>
 											<td align="center"> Tu puntuacion: <?php echo $mi_puntaje['puntaje']; ?> </td>
-									<?
+									<?php
 										}
 									}
 									else{
