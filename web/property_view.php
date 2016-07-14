@@ -152,6 +152,7 @@ session_start();
 					<div align="center">
 						<div>
 							<button type="submit" class="btn btn-default navbar-btn" name="prop" id="prop" value="<?php echo htmlspecialchars($var);?>">Alquilar</button>
+							<a href="user_question.php?preg=<?php echo $propiedad['id_propiedad'];?>"><button type="button" class="btn btn-primary navbar-btn">Hacer Pregunta</button></a>
 						</div>
 					</div>
 				</form>
