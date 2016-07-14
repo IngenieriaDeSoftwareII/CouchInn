@@ -30,6 +30,10 @@ session_start();
 			$foto_propiedad = mysql_fetch_array($result3);
 			$result4 = mysql_query("SELECT * FROM usuario WHERE id_usuario = '$propiedad[id_usuario]'");
 			$usuario_propiedad = mysql_fetch_array($result4);
+			$query2 = mysql_query("SELECT AVG(puntaje) AS promedio FROM puntaje_propiedad WHERE id_propiedad = $_GET[id_propiedad]");
+			$puntajePropiedad = mysql_fetch_array($query2);
+			$query3 = mysql_query("SELECT AVG(puntaje) AS promedio FROM puntaje_propietario WHERE id_usuario = '$propiedad[id_usuario]'");
+			$puntajePropietario = mysql_fetch_array($query3);
 	    ?>
 	    <div class="container">
     		<h1 class="well"><?php echo $propiedad['nombre'];?> | <?php echo $propiedad_ubicacion['ciudad'];?> </h1>
@@ -59,7 +63,7 @@ session_start();
 										?>
 								            <a href="#" class="uk-slidenav uk-slidenav-contrast uk-slidenav-previous" data-uk-slideshow-item="previous" style="width:160px;height:560px;"></a>
 								            <a href="#" class="uk-slidenav uk-slidenav-contrast uk-slidenav-next" data-uk-slideshow-item="next" style="width:160px;height:560px; "></a>
-								        <?
+								        <?php
 										}
 									?>
 						        </div>
@@ -78,12 +82,12 @@ session_start();
 							<br>
 							<div class="row">
 								<label>Puntuacion Propiedad</label>
-								<span readonly id="nombre" class="form-control"> </span>
+								<span readonly id="nombre" class="form-control"> <?php echo $puntajePropiedad['promedio']; ?> </span>
 							</div>
 							<br>
 							<div class="row">
 								<label>Puntuacion Propietario</label>
-								<span readonly id="nombre" class="form-control"> </span>
+								<span readonly id="nombre" class="form-control"> <?php echo $puntajePropietario['promedio']; ?> </span>
 							</div>
 						</div>
 					<br>

@@ -11,6 +11,15 @@ session_start();
 	    <title>Couch Inn - Reserva tu proximo Hospedaje!</title>
 	    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
 	    <link rel="stylesheet" href="css/w3.css">
+	     <script>
+	    	function justNumbers(e){
+		        var keynum = window.event ? window.event.keyCode : e.which;
+		        if ((keynum == 8) || (keynum == 46))
+		        return true;
+		         
+		        return /\d/.test(String.fromCharCode(keynum));
+	        }  
+	    </script>     
   	</head>
   	<body>
     	<?php
@@ -39,6 +48,9 @@ session_start();
 								<td align="center"><strong>Fecha Inicio</strong></td>
 								<td align="center"><strong>Fecha Fin</strong></td>
 								<td align="center"><strong>Estado</strong></td>
+								<td align="center"><strong></strong></td>
+								<td align="center"><strong></strong></td>
+								<td align="center"><strong>Puntuacion</strong></td>
 							</tr>
 							<?php
 							include 'conexion.php';
@@ -46,6 +58,14 @@ session_start();
 							while ($tabla = mysql_fetch_array($result)){
 								$result2 = mysql_query("SELECT * FROM propiedad WHERE id_propiedad = $tabla[id_propiedad]");
 								$propiedad = mysql_fetch_array($result2);
+								$result3 = mysql_query("SELECT * FROM usuario WHERE id_usuario = $propiedad[id_usuario]");
+								$usuario = mysql_fetch_array($result3);
+								$id_reserva = $tabla["id_reserva_propiedad"];
+								$query = mysql_query("SELECT * FROM puntaje_propiedad WHERE id_reserva = $id_reserva");
+								$mi_puntaje = mysql_fetch_array($query);
+								$query2 = mysql_query("SELECT * FROM puntaje_propietario WHERE id_reserva = $id_reserva");
+								$mi_puntaje2 = mysql_fetch_array($query2);
+								$count = mysql_num_rows($query);	
 							?>
 							<tr>
 								<td align="center"> <?php echo $propiedad["nombre"];?></td>
@@ -73,7 +93,8 @@ session_start();
 									<?php
 									}
 								?>
-								<td><a href="property_view.php?id_propiedad=<?php echo $propiedad["id_propiedad"];?>" align="center"><button name="ver_propiedad" class="btn btn-primary btn-group-xs">Ver Propiedad</button></a></td>
+								<td><a href="property_view.php?id_propiedad=<?php echo $propiedad["id_propiedad"];?>" align="center"><button name="ver_propiedad" class="btn btn-info btn-group-xs">Ver Propiedad</button></a></td>
+
 								<?php
 								if ($tabla["estado"] < 2){
 								?>									
@@ -85,7 +106,53 @@ session_start();
 									<td align="center"> <button type="submit" style="display: none;"></button></td>
 								<?php
 								}
+								if ($tabla["estado"] == 2){
+									if ($count == 0){
 								?>
+									<div class="modal fade" id="myModal<?php echo htmlspecialchars($id_reserva);?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+												<div class="modal-dialog" role="document">
+											    	<div class="modal-content">
+											      		<form name="puntuacion" action="reservation_punctuation.php" method="POST">
+												      		<div class="modal-header">
+												        		<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+												          			<span aria-hidden="true">&times;</span>
+												        		</button>
+												        		<h4 align="center" class="modal-title" style="font-size:200%;" id="myModalLabel">Puntuar Reserva</h4>
+												      		</div>
+												      		<div class="modal-body">
+												        		<div align="center"><span class="glyphicon glyphicon-user" style="font-size:200%;"></span><span style="font-size:120%;"> <?php echo $usuario["nombre_usuario"];?></span></div>
+												        		<br>
+												        		<div align="center"><input name="puntajepropietario" onkeypress="return justNumbers(event);" type="number" min=1 max=5 placeholder="Puntaje Propietario" class="form-control" style="width: 100px; text-align: center;" required="required"></div>
+												        		<br>
+												        		<div align="center"><span class="glyphicon glyphicon-home" style="font-size:200%;"></span><span style="font-size:120%;"> <?php echo $propiedad["nombre"];?></span></div>
+												        		<br>
+												        		<div align="center"><input name="puntajepropiedad" onkeypress="return justNumbers(event);" type="number" min=1 max=5 placeholder="Puntaje Propiedad" class="form-control" style="width: 100px; text-align: center;" required="required"></div>
+												      		</div>
+												      		<div class="modal-footer">
+												        		<button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+												        		<button type="submit" class="btn btn-primary" name="id_reserva" value="<?php echo htmlspecialchars($tabla["id_reserva_propiedad"]);?>">Puntuar</button>
+												      		</div>
+												      	</form>
+											    	</div>
+											 	</div>
+											</div>
+										<td align="center"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal<?php echo htmlspecialchars($id_reserva);?>">Puntuar Reserva</button>
+										<td align="center"> <button type="submit" style="display: none;"></button></td>
+								<?php
+									}
+									else{
+								?>
+									<td align="center"> Puntuacion propiedad: <?php echo $mi_puntaje['puntaje']; ?> <br> Puntuacion propietario: <?php echo $mi_puntaje2['puntaje']; ?></td>
+								<?php
+									}
+								}
+								else{
+									?>
+									<td align="center"> <button type="submit" style="display: none;"></button></td>
+								<?php
+								}
+								?>
+
 							</tr>
 							<?php
 							}
